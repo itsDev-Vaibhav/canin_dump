@@ -6,7 +6,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.trangile.prototype.db.entity.User;
+import com.trangile.prototype.security.entity.User;
 import com.trangile.prototype.service.UserService;
 
 @Component

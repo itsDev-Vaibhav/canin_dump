@@ -12,18 +12,19 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.trangile.prototype.db.entity.Role;
-import com.trangile.prototype.db.entity.User;
-import com.trangile.prototype.db.repository.UserRepository;
+import com.trangile.prototype.security.entity.Role;
+import com.trangile.prototype.security.entity.User;
+import com.trangile.prototype.security.repository.UserRepository;
 
 @Service
+@Transactional(transactionManager="securityTransactionManager")
 public class UserDetailsServiceImpl implements UserDetailsService{
    
 	@Autowired
     private UserRepository userRepository;
 
     @Override
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) {
         User user = userRepository.findByUsername(username);
         if (user == null) throw new UsernameNotFoundException(username);

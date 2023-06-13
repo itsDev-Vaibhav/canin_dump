@@ -1,4 +1,4 @@
-package com.trangile.prototype.db.entity;
+package com.trangile.prototype.security.entity;
 
 import java.util.Set;
 

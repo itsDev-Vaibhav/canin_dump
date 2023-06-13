@@ -1,4 +1,4 @@
-package com.trangile.prototype.db.entity;
+package com.trangile.prototype.security.entity;
 
 import java.util.Set;
 
@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -25,6 +27,10 @@ public class User {
     private String passwordConfirm;
 
     @ManyToMany
+    @JoinTable(
+    		  name = "user_roles", 
+    		  joinColumns = @JoinColumn(name = "users_id"), 
+    		  inverseJoinColumns = @JoinColumn(name = "roles_id"))
     private Set<Role> roles;
 
     public Long getId() {

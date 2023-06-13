@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.trangile.prototype.db.entity.User;
-import com.trangile.prototype.db.repository.RoleRepository;
-import com.trangile.prototype.db.repository.UserRepository;
+import com.trangile.prototype.security.entity.User;
+import com.trangile.prototype.security.repository.RoleRepository;
+import com.trangile.prototype.security.repository.UserRepository;
 import com.trangile.prototype.service.UserService;
 
 @Service
