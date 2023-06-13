@@ -1,0 +1,72 @@
+server:
+  servlet:
+    session:
+      timeout: 2m
+  port: 8090
+  
+  
+logging:
+ level:
+   root: info
+   '[org.springframework]': error
+   '[com.danubehome]': info
+ 
+
+spring:
+  profiles:
+    active:
+    - "local"
+  main:
+    banner-mode: off
+  thymeleaf:
+    suffix: .html
+    cache: false
+    
+---
+###### local server details
+spring:
+  config:
+    activate:
+      on-profile: "local"
+
+########DB DETAILS
+  datasource:
+    username: root
+    password: Tspl@#2022
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/security
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      dialect: org.hibernate.dialect.MySQLDialect
+      
+server:
+  address: 127.0.0.1  
+---
+
+###### development / uat server details
+spring:
+  config:
+    activate:
+      on-profile: "dev"
+
+server:
+  address: 192.168.1.55
+
+########## DB DETAILS
+
+---
+###### production server details
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+       
+##### hosting server   
+server:
+  address: 192.168.50.176
+  servlet:
+    session:
+      timeout: 120s
