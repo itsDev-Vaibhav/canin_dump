@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.trangile.prototype.dbo.entity.SCE_RC_GRN;
 import com.trangile.prototype.dbo.entity.SCE_RC_SHIPMENT;
 import com.trangile.prototype.dbo.repository.SCE_RC_SHIPMENT_Repo;
 

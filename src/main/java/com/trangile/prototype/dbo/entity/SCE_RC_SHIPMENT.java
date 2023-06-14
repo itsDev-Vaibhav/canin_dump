@@ -24,7 +24,7 @@ public class SCE_RC_SHIPMENT {
 	private String VehicleNo;
 	private Double EDISelltoCustomerNo;
 	private Double Line_No;
-	private String ItemNo;
+	private Double ItemNo;
 	private String UnitofMeasureCode;
 	private Double EDILocationCode;
 	private String LocationCode;
@@ -53,7 +53,7 @@ public class SCE_RC_SHIPMENT {
 	public SCE_RC_SHIPMENT(String mESSAGE_ID, String wHSEID, String documentNo, String externalDocumentNo,
 			Double packageTrackingNo, LocalDateTime shipmentDate, String selltoCustomerNo, String shippingAgentCode,
 			String transportMethod, String distance, String vehicleType, String vehicleNo, Double eDISelltoCustomerNo,
-			Double line_No, String itemNo, String unitofMeasureCode, Double eDILocationCode, String locationCode,
+			Double line_No, Double itemNo, String unitofMeasureCode, Double eDILocationCode, String locationCode,
 			Double qtytoShip, Double qtytoShipBase, String reasonCode, Double eANCode, String vLCode,
 			Double qtyperUnitofMeasure, Double quantity, Double quantityBase, LocalDateTime expirationDate,
 			String lotNo, String qualityStatus, String pHRStatus, String rDD, LocalDateTime manufacturingDate,
@@ -233,13 +233,12 @@ public class SCE_RC_SHIPMENT {
 		Line_No = line_No;
 	}
 
-
-	public String getItemNo() {
+	public Double getItemNo() {
 		return ItemNo;
 	}
 
 
-	public void setItemNo(String itemNo) {
+	public void setItemNo(Double itemNo) {
 		ItemNo = itemNo;
 	}
 
