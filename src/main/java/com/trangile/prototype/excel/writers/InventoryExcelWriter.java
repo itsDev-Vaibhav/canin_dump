@@ -18,13 +18,13 @@ public class InventoryExcelWriter {
 	List<SCE_RC_STOCK_ADJ> inventoryData;
     private XSSFSheet sheet;
 	
-	public InventoryExcelWriter(XSSFWorkbook workbook, List<SCE_RC_STOCK_ADJ> inventoryData) {
+	public InventoryExcelWriter(XSSFWorkbook workbook) {
 		this.workbook = workbook;
-		this.inventoryData = inventoryData;
+//		this.inventoryData = inventoryData;
 	}
 	
 	public void writeHeaderLine() {
-        sheet = workbook.createSheet("Inventory");
+        sheet = workbook.createSheet("Inventory Adjustment");
         Row row = sheet.createRow(0);
         CellStyle style = workbook.createCellStyle();
         XSSFFont font = workbook.createFont();
@@ -45,7 +45,7 @@ public class InventoryExcelWriter {
         createCell(row, 11, "Source Sub Type", style);
         createCell(row, 12, "Source ID", style);
         createCell(row, 13, "Source Ref. No.", style);
-        writeDataLines();
+//        writeDataLines();
     }
 	
 	private void createCell(Row row, int columnCount, Object value, CellStyle style) {

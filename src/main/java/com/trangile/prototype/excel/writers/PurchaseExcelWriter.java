@@ -65,14 +65,22 @@ public class PurchaseExcelWriter {
         XSSFFont font = workbook.createFont();
         font.setFontHeight(10);
         style.setFont(font);
-        for (SCE_RC_GRN user : purchaseData) {
+        for (SCE_RC_GRN grn_in : purchaseData) {
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
-            createCell(row, columnCount++, user.getMESSAGE_ID(), style);
-            createCell(row, columnCount++, String.format("%.0f",user.getItemNo()), style);
-            createCell(row, columnCount++, user.getDocumentNo().toString(), style);
-            createCell(row, columnCount++, user.getOrderDate().toString(), style);
-            createCell(row, columnCount++, user.getLocationCode().toString(), style);
+            createCell(row, columnCount++, grn_in.getOrderDate().toString(), style);
+            createCell(row, columnCount++, String.format("%.0f",grn_in.getItemNo()), style);
+            createCell(row, columnCount++, "Description", style);
+            createCell(row, columnCount++, grn_in.getQuantityBase(), style);
+            createCell(row, columnCount++, grn_in.getLotNo(), style);
+            createCell(row, columnCount++, grn_in.getExpirationDate().toString(), style);
+            createCell(row, columnCount++, String.format(grn_in.getTNOPAL()), style);
+            createCell(row, columnCount++, String.format("Manufacturing Lot No."), style);
+            createCell(row, columnCount++, grn_in.getLocationCode(), style);
+            createCell(row, columnCount++, grn_in.getQualityStatus(), style);
+            createCell(row, columnCount++, "Purchase Order", style);
+            createCell(row, columnCount++, grn_in.getDocumentNo(), style);
+            createCell(row, columnCount++, grn_in.getWHSEID(), style);
         }
     }
 

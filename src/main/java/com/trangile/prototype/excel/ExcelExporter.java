@@ -13,6 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.trangile.prototype.dbo.entity.SCE_RC_GRN;
 import com.trangile.prototype.dbo.entity.SCE_RC_SHIPMENT;
+import com.trangile.prototype.excel.writers.InventoryExcelWriter;
 import com.trangile.prototype.excel.writers.PurchaseExcelWriter;
 import com.trangile.prototype.excel.writers.SalesExcelWriter;
 
@@ -35,6 +36,8 @@ public class ExcelExporter {
 		pw.writeHeaderLine();
 		SalesExcelWriter sw = new SalesExcelWriter(workbook, salesData);
 		sw.writeHeaderLine();
+		InventoryExcelWriter iw = new InventoryExcelWriter(workbook);
+		iw.writeHeaderLine();
         ServletOutputStream outputStream = response.getOutputStream();
         workbook.write(outputStream);
         workbook.close();

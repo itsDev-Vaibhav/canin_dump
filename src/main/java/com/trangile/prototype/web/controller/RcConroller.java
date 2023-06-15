@@ -39,5 +39,4 @@ public class RcConroller {
 		ExcelExporter excelExporter = new ExcelExporter();
 		excelExporter.export(response, resultByItem, resultByItem2);
 	}
-
 }

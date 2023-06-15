@@ -15,7 +15,7 @@ public class SCE_RC_STOCK_ADJ {
 	private String MESSAGE_ID;
 	private String WHSEID;
 	private Double Line_No;
-	private String ItemNo;
+	private Double ItemNo;
 	private LocalDateTime PostingDate;
 	private LocalTime PostingTime;
 	private Double EntryType;
@@ -43,7 +43,7 @@ public class SCE_RC_STOCK_ADJ {
 		
 	}
 
-	public SCE_RC_STOCK_ADJ(String mESSAGE_ID, String wHSEID, Double line_No, String itemNo, LocalDateTime postingDate,
+	public SCE_RC_STOCK_ADJ(String mESSAGE_ID, String wHSEID, Double line_No, Double itemNo, LocalDateTime postingDate,
 			LocalTime postingTime, Double entryType, Double documentNo, String description, Long eDILocationCode,
 			String locationCode, String unitofMeasureCode, Long quantity, Long quantityBase, String reasonCode,
 			Long eANCode, String vLCode, Long entryNo, String qtyperUnitofMeasure, LocalDateTime expirationDate,
@@ -102,11 +102,11 @@ public class SCE_RC_STOCK_ADJ {
 		Line_No = line_No;
 	}
 
-	public String getItemNo() {
+	public Double getItemNo() {
 		return ItemNo;
 	}
 
-	public void setItemNo(String itemNo) {
+	public void setItemNo(Double itemNo) {
 		ItemNo = itemNo;
 	}
 
