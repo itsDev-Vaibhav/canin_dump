@@ -3,14 +3,18 @@ package com.trangile.prototype.dbo.entity;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "SCE_RC_GRN_DATA", schema = "dbo")
+@Table(name = "SCE_RC_GRN_DATA")
 public class SCE_RC_GRN {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long Id;
 	private String MESSAGE_ID;
 	private String WHSEID;
 	private String DocumentNo;
@@ -19,10 +23,12 @@ public class SCE_RC_GRN {
 	private String LocationCode;
 	private LocalDateTime ReceiptDate;
 	private Double Line_No;
-	private Double ItemNo;
+	private String ItemNo;
 	private String UnitofMeasureCode;
+	private String Description;
 	private Double QuantityTotal;
 	private String QuantityBaseTotal;
+	private String ManufacturingLotNo;
 	private String EANCode;
 	private String QtyperUnitofMeasure;
 	private Double Quantity;
@@ -40,12 +46,11 @@ public class SCE_RC_GRN {
 	}
 
 	public SCE_RC_GRN(String mESSAGE_ID, String wHSEID, String documentNo, LocalDateTime orderDate,
-			String buyFromVendorNo, String locationCode, LocalDateTime receiptDate, Double line_No, Double itemNo,
-			String unitofMeasureCode, Double quantityTotal, String quantityBaseTotal, String eANCode,
-			String qtyperUnitofMeasure, Double quantity, String quantityBase, LocalDateTime expirationDate,
-			String lotNo, String qualityStatus, String pHRStatus, LocalDateTime rDD, LocalDateTime manufacturingDate,
-			String tNOPAL) {
-		super();
+			String buyFromVendorNo, String locationCode, LocalDateTime receiptDate, Double line_No, String itemNo,
+			String unitofMeasureCode, String description, Double quantityTotal, String quantityBaseTotal,
+			String manufacturingLotNo, String eANCode, String qtyperUnitofMeasure, Double quantity, String quantityBase,
+			LocalDateTime expirationDate, String lotNo, String qualityStatus, String pHRStatus, LocalDateTime rDD,
+			LocalDateTime manufacturingDate, String tNOPAL) {
 		MESSAGE_ID = mESSAGE_ID;
 		WHSEID = wHSEID;
 		DocumentNo = documentNo;
@@ -56,8 +61,10 @@ public class SCE_RC_GRN {
 		Line_No = line_No;
 		ItemNo = itemNo;
 		UnitofMeasureCode = unitofMeasureCode;
+		Description = description;
 		QuantityTotal = quantityTotal;
 		QuantityBaseTotal = quantityBaseTotal;
+		ManufacturingLotNo = manufacturingLotNo;
 		EANCode = eANCode;
 		QtyperUnitofMeasure = qtyperUnitofMeasure;
 		Quantity = quantity;
@@ -135,11 +142,11 @@ public class SCE_RC_GRN {
 		Line_No = line_No;
 	}
 
-	public Double getItemNo() {
+	public String getItemNo() {
 		return ItemNo;
 	}
 
-	public void setItemNo(Double itemNo) {
+	public void setItemNo(String itemNo) {
 		ItemNo = itemNo;
 	}
 
@@ -149,6 +156,14 @@ public class SCE_RC_GRN {
 
 	public void setUnitofMeasureCode(String unitofMeasureCode) {
 		UnitofMeasureCode = unitofMeasureCode;
+	}
+
+	public String getDescription() {
+		return Description;
+	}
+
+	public void setDescription(String description) {
+		Description = description;
 	}
 
 	public Double getQuantityTotal() {
@@ -165,6 +180,14 @@ public class SCE_RC_GRN {
 
 	public void setQuantityBaseTotal(String quantityBaseTotal) {
 		QuantityBaseTotal = quantityBaseTotal;
+	}
+
+	public String getManufacturingLotNo() {
+		return ManufacturingLotNo;
+	}
+
+	public void setManufacturingLotNo(String manufacturingLotNo) {
+		ManufacturingLotNo = manufacturingLotNo;
 	}
 
 	public String getEANCode() {
@@ -260,11 +283,14 @@ public class SCE_RC_GRN {
 		return "SCE_RC_GRN [MESSAGE_ID=" + MESSAGE_ID + ", WHSEID=" + WHSEID + ", DocumentNo=" + DocumentNo
 				+ ", OrderDate=" + OrderDate + ", BuyFromVendorNo=" + BuyFromVendorNo + ", LocationCode=" + LocationCode
 				+ ", ReceiptDate=" + ReceiptDate + ", Line_No=" + Line_No + ", ItemNo=" + ItemNo
-				+ ", UnitofMeasureCode=" + UnitofMeasureCode + ", QuantityTotal=" + QuantityTotal
-				+ ", QuantityBaseTotal=" + QuantityBaseTotal + ", EANCode=" + EANCode + ", QtyperUnitofMeasure="
-				+ QtyperUnitofMeasure + ", Quantity=" + Quantity + ", QuantityBase=" + QuantityBase
-				+ ", ExpirationDate=" + ExpirationDate + ", LotNo=" + LotNo + ", QualityStatus=" + QualityStatus
-				+ ", PHRStatus=" + PHRStatus + ", RDD=" + RDD + ", ManufacturingDate=" + ManufacturingDate + ", TNOPAL="
-				+ TNOPAL + "]";
+				+ ", UnitofMeasureCode=" + UnitofMeasureCode + ", Description=" + Description + ", QuantityTotal="
+				+ QuantityTotal + ", QuantityBaseTotal=" + QuantityBaseTotal + ", ManufacturingLotNo="
+				+ ManufacturingLotNo + ", EANCode=" + EANCode + ", QtyperUnitofMeasure=" + QtyperUnitofMeasure
+				+ ", Quantity=" + Quantity + ", QuantityBase=" + QuantityBase + ", ExpirationDate=" + ExpirationDate
+				+ ", LotNo=" + LotNo + ", QualityStatus=" + QualityStatus + ", PHRStatus=" + PHRStatus + ", RDD=" + RDD
+				+ ", ManufacturingDate=" + ManufacturingDate + ", TNOPAL=" + TNOPAL + "]";
 	}
+	
+	
+	
 }

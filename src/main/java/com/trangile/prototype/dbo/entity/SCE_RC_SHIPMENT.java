@@ -3,17 +3,24 @@ package com.trangile.prototype.dbo.entity;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "SCE_RC_SHIPMENT_SO_DATA", schema = "dbo")
+@Table(name = "SCE_RC_SHIPMENT_SO_DATA")
 public class SCE_RC_SHIPMENT {
+
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long Id;
 	private String MESSAGE_ID;
 	private String WHSEID;
 	private String DocumentNo;
 	private String ExternalDocumentNo;
+	private String Description;
 	private Double PackageTrackingNo;
 	private LocalDateTime ShipmentDate;
 	private String SelltoCustomerNo;
@@ -22,9 +29,11 @@ public class SCE_RC_SHIPMENT {
 	private String Distance;
 	private String VehicleType;
 	private String VehicleNo;
+	private String ManufacturingLotNo;
+	private String SelltoCustomerName;
 	private Double EDISelltoCustomerNo;
 	private Double Line_No;
-	private Double ItemNo;
+	private String ItemNo;
 	private String UnitofMeasureCode;
 	private Double EDILocationCode;
 	private String LocationCode;
@@ -42,7 +51,7 @@ public class SCE_RC_SHIPMENT {
 	private String PHRStatus;
 	private String RDD;
 	private LocalDateTime ManufacturingDate;
-	private Double TNOPAL;
+	private String TNOPAL;
 	
 	
 	public SCE_RC_SHIPMENT() {
@@ -51,17 +60,18 @@ public class SCE_RC_SHIPMENT {
 
 
 	public SCE_RC_SHIPMENT(String mESSAGE_ID, String wHSEID, String documentNo, String externalDocumentNo,
-			Double packageTrackingNo, LocalDateTime shipmentDate, String selltoCustomerNo, String shippingAgentCode,
-			String transportMethod, String distance, String vehicleType, String vehicleNo, Double eDISelltoCustomerNo,
-			Double line_No, Double itemNo, String unitofMeasureCode, Double eDILocationCode, String locationCode,
-			Double qtytoShip, Double qtytoShipBase, String reasonCode, Double eANCode, String vLCode,
-			Double qtyperUnitofMeasure, Double quantity, Double quantityBase, LocalDateTime expirationDate,
-			String lotNo, String qualityStatus, String pHRStatus, String rDD, LocalDateTime manufacturingDate,
-			Double tNOPAL) {
+			String description, Double packageTrackingNo, LocalDateTime shipmentDate, String selltoCustomerNo,
+			String shippingAgentCode, String transportMethod, String distance, String vehicleType, String vehicleNo,
+			String manufacturingLotNo, String selltoCustomerName, Double eDISelltoCustomerNo, Double line_No,
+			String itemNo, String unitofMeasureCode, Double eDILocationCode, String locationCode, Double qtytoShip,
+			Double qtytoShipBase, String reasonCode, Double eANCode, String vLCode, Double qtyperUnitofMeasure,
+			Double quantity, Double quantityBase, LocalDateTime expirationDate, String lotNo, String qualityStatus,
+			String pHRStatus, String rDD, LocalDateTime manufacturingDate, String tNOPAL) {
 		MESSAGE_ID = mESSAGE_ID;
 		WHSEID = wHSEID;
 		DocumentNo = documentNo;
 		ExternalDocumentNo = externalDocumentNo;
+		Description = description;
 		PackageTrackingNo = packageTrackingNo;
 		ShipmentDate = shipmentDate;
 		SelltoCustomerNo = selltoCustomerNo;
@@ -70,6 +80,8 @@ public class SCE_RC_SHIPMENT {
 		Distance = distance;
 		VehicleType = vehicleType;
 		VehicleNo = vehicleNo;
+		ManufacturingLotNo = manufacturingLotNo;
+		SelltoCustomerName = selltoCustomerName;
 		EDISelltoCustomerNo = eDISelltoCustomerNo;
 		Line_No = line_No;
 		ItemNo = itemNo;
@@ -131,6 +143,16 @@ public class SCE_RC_SHIPMENT {
 
 	public void setExternalDocumentNo(String externalDocumentNo) {
 		ExternalDocumentNo = externalDocumentNo;
+	}
+
+
+	public String getDescription() {
+		return Description;
+	}
+
+
+	public void setDescription(String description) {
+		Description = description;
 	}
 
 
@@ -214,6 +236,26 @@ public class SCE_RC_SHIPMENT {
 	}
 
 
+	public String getManufacturingLotNo() {
+		return ManufacturingLotNo;
+	}
+
+
+	public void setManufacturingLotNo(String manufacturingLotNo) {
+		ManufacturingLotNo = manufacturingLotNo;
+	}
+
+
+	public String getSelltoCustomerName() {
+		return SelltoCustomerName;
+	}
+
+
+	public void setSelltoCustomerName(String selltoCustomerName) {
+		SelltoCustomerName = selltoCustomerName;
+	}
+
+
 	public Double getEDISelltoCustomerNo() {
 		return EDISelltoCustomerNo;
 	}
@@ -233,12 +275,13 @@ public class SCE_RC_SHIPMENT {
 		Line_No = line_No;
 	}
 
-	public Double getItemNo() {
+
+	public String getItemNo() {
 		return ItemNo;
 	}
 
 
-	public void setItemNo(Double itemNo) {
+	public void setItemNo(String itemNo) {
 		ItemNo = itemNo;
 	}
 
@@ -413,12 +456,12 @@ public class SCE_RC_SHIPMENT {
 	}
 
 
-	public Double getTNOPAL() {
+	public String getTNOPAL() {
 		return TNOPAL;
 	}
 
 
-	public void setTNOPAL(Double tNOPAL) {
+	public void setTNOPAL(String tNOPAL) {
 		TNOPAL = tNOPAL;
 	}
 
@@ -426,10 +469,11 @@ public class SCE_RC_SHIPMENT {
 	@Override
 	public String toString() {
 		return "SCE_RC_SHIPMENT [MESSAGE_ID=" + MESSAGE_ID + ", WHSEID=" + WHSEID + ", DocumentNo=" + DocumentNo
-				+ ", ExternalDocumentNo=" + ExternalDocumentNo + ", PackageTrackingNo=" + PackageTrackingNo
-				+ ", ShipmentDate=" + ShipmentDate + ", SelltoCustomerNo=" + SelltoCustomerNo + ", ShippingAgentCode="
-				+ ShippingAgentCode + ", TransportMethod=" + TransportMethod + ", Distance=" + Distance
-				+ ", VehicleType=" + VehicleType + ", VehicleNo=" + VehicleNo + ", EDISelltoCustomerNo="
+				+ ", ExternalDocumentNo=" + ExternalDocumentNo + ", Description=" + Description + ", PackageTrackingNo="
+				+ PackageTrackingNo + ", ShipmentDate=" + ShipmentDate + ", SelltoCustomerNo=" + SelltoCustomerNo
+				+ ", ShippingAgentCode=" + ShippingAgentCode + ", TransportMethod=" + TransportMethod + ", Distance="
+				+ Distance + ", VehicleType=" + VehicleType + ", VehicleNo=" + VehicleNo + ", ManufacturingLotNo="
+				+ ManufacturingLotNo + ", SelltoCustomerName=" + SelltoCustomerName + ", EDISelltoCustomerNo="
 				+ EDISelltoCustomerNo + ", Line_No=" + Line_No + ", ItemNo=" + ItemNo + ", UnitofMeasureCode="
 				+ UnitofMeasureCode + ", EDILocationCode=" + EDILocationCode + ", LocationCode=" + LocationCode
 				+ ", QtytoShip=" + QtytoShip + ", QtytoShipBase=" + QtytoShipBase + ", ReasonCode=" + ReasonCode

@@ -13,11 +13,12 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
+	
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long userId;
 
     private String username;
 
@@ -32,16 +33,16 @@ public class User {
     		  joinColumns = @JoinColumn(name = "users_id"), 
     		  inverseJoinColumns = @JoinColumn(name = "roles_id"))
     private Set<Role> roles;
+    
+    public Long getUserId() {
+		return userId;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
+	public String getUsername() {
         return username;
     }
 

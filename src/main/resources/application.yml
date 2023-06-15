@@ -30,28 +30,27 @@ spring:
       on-profile: "local"
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true
     properties:
-      dialect: org.hibernate.dialect.MySQLDialect    
+      dialect: org.hibernate.dialect.SQLServer2016Dialect
+    
 
 ########DB DETAILS
 security:
   datasource:
-    username: root
+    username: sa
     password: Tspl@#2022
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/security
-    initialize: true
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost:1433;databaseName=FMLSTAGE;encrypt=true;trustServerCertificate=true;
 
       
 dbo:
   datasource:
-    username: root
+    username: sa
     password: Tspl@#2022
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/dbo
-    initialize: true
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost:1433;databaseName=FMLSTAGE;encrypt=true;trustServerCertificate=true;
       
 server:
   address: 127.0.0.1  
