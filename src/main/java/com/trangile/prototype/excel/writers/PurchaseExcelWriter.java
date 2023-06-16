@@ -9,15 +9,15 @@ import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.trangile.prototype.dbo.entity.SCE_RC_GRN;
+import com.trangile.prototype.dto.PurchaseDto;
 
 public class PurchaseExcelWriter {
 	
 	private XSSFWorkbook workbook;
-	List<SCE_RC_GRN> purchaseData;
+	List<PurchaseDto> purchaseData;
     private XSSFSheet sheet;
 
-	public PurchaseExcelWriter(XSSFWorkbook workbook, List<SCE_RC_GRN> purchaseData) {
+	public PurchaseExcelWriter(XSSFWorkbook workbook, List<PurchaseDto> purchaseData) {
 		this.workbook = workbook;
 		this.purchaseData = purchaseData;
 	}
@@ -65,16 +65,16 @@ public class PurchaseExcelWriter {
         XSSFFont font = workbook.createFont();
         font.setFontHeight(10);
         style.setFont(font);
-        for (SCE_RC_GRN grn_in : purchaseData) {
+        for (PurchaseDto grn_in : purchaseData) {
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
-            createCell(row, columnCount++, grn_in.getOrderDate().toString(), style);
-            createCell(row, columnCount++, String.format("%.0f",grn_in.getItemNo()), style);
+            createCell(row, columnCount++, grn_in.getExpirationDate().toString(), style);
+            createCell(row, columnCount++, grn_in.getItemNo(), style);
             createCell(row, columnCount++, "Description", style);
-            createCell(row, columnCount++, grn_in.getQuantityBase(), style);
+            createCell(row, columnCount++, String.format(grn_in.getQuantity().toString()), style);
             createCell(row, columnCount++, grn_in.getLotNo(), style);
             createCell(row, columnCount++, grn_in.getExpirationDate().toString(), style);
-            createCell(row, columnCount++, String.format(grn_in.getTNOPAL()), style);
+            createCell(row, columnCount++, grn_in.getTNOPAL(), style);
             createCell(row, columnCount++, String.format("Manufacturing Lot No."), style);
             createCell(row, columnCount++, grn_in.getLocationCode(), style);
             createCell(row, columnCount++, grn_in.getQualityStatus(), style);

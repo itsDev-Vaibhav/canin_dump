@@ -67,7 +67,6 @@ public class DboDataSourceConfig {
         jpaProperties.put("hibernate.hbm2ddl.auto", env.getProperty("spring.jpa.hibernate.ddl-auto"));
         jpaProperties.put("hibernate.show-sql", env.getProperty("spring.jpa.show-sql"));
         factory.setJpaProperties(jpaProperties);
-        
         return factory;
         
     }
