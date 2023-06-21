@@ -2,40 +2,42 @@ package com.trangile.prototype.dto;
 
 import java.time.LocalDateTime;
 
-public class PurchaseDto {
+public class InventoryDto {
 	
 	private LocalDateTime CreationDate;
 	private String ItemNo;
 	private String Description;
-	private Double QuantityBase;
+	private Double Quantity;
 	private String LotNo;
 	private LocalDateTime ExpirationDate;
 	private String TNOPAL;
 	private String ManufacturingLotNo;
+	private LocalDateTime ManufacturingDate;
 	private String LocationCode;
 	private String QualityStatus;
-	private String SourceSubType;
+	private String ReasonCode;
 	private String DocumentNo;
 	private String WHSEID;
 	
-	public PurchaseDto() {
+	public InventoryDto() {
 		
 	}
 
-	public PurchaseDto(LocalDateTime creationDate, String itemNo, String description, Double quantityBase, String lotNo,
-			LocalDateTime expirationDate, String tNOPAL, String manufacturingLotNo, String locationCode,
-			String qualityStatus, String sourceSubType, String documentNo, String wHSEID) {
+	public InventoryDto(LocalDateTime creationDate, String itemNo, String description, Double quantity, String lotNo,
+			LocalDateTime expirationDate, String tNOPAL, String manufacturingLotNo, LocalDateTime manufacturingDate,
+			String locationCode, String qualityStatus, String reasonCode, String documentNo, String wHSEID) {
 		CreationDate = creationDate;
 		ItemNo = itemNo;
 		Description = description;
-		QuantityBase = quantityBase;
+		Quantity = quantity;
 		LotNo = lotNo;
 		ExpirationDate = expirationDate;
 		TNOPAL = tNOPAL;
 		ManufacturingLotNo = manufacturingLotNo;
+		ManufacturingDate = manufacturingDate;
 		LocationCode = locationCode;
 		QualityStatus = qualityStatus;
-		SourceSubType = sourceSubType;
+		ReasonCode = reasonCode;
 		DocumentNo = documentNo;
 		WHSEID = wHSEID;
 	}
@@ -64,12 +66,12 @@ public class PurchaseDto {
 		Description = description;
 	}
 
-	public Double getQuantityBase() {
-		return QuantityBase;
+	public Double getQuantity() {
+		return Quantity;
 	}
 
-	public void setQuantityBase(Double quantityBase) {
-		QuantityBase = quantityBase;
+	public void setQuantity(Double quantity) {
+		Quantity = quantity;
 	}
 
 	public String getLotNo() {
@@ -104,6 +106,14 @@ public class PurchaseDto {
 		ManufacturingLotNo = manufacturingLotNo;
 	}
 
+	public LocalDateTime getManufacturingDate() {
+		return ManufacturingDate;
+	}
+
+	public void setManufacturingDate(LocalDateTime manufacturingDate) {
+		ManufacturingDate = manufacturingDate;
+	}
+
 	public String getLocationCode() {
 		return LocationCode;
 	}
@@ -120,12 +130,12 @@ public class PurchaseDto {
 		QualityStatus = qualityStatus;
 	}
 
-	public String getSourceSubType() {
-		return SourceSubType;
+	public String getReasonCode() {
+		return ReasonCode;
 	}
 
-	public void setSourceSubType(String sourceSubType) {
-		SourceSubType = sourceSubType;
+	public void setReasonCode(String reasonCode) {
+		ReasonCode = reasonCode;
 	}
 
 	public String getDocumentNo() {

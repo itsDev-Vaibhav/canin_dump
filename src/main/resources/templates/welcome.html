@@ -44,19 +44,24 @@
 					<h4>Search</h4>
 					<form role="form" method="post" th:action="@{/rc/search}" th:object="${searchForm}">
 						<label>Item:</label>
-						<input type="text" th:field = "*{sku}"/>
+						<input id="typeSKU" type="text" th:field = "*{sku}"/>
 						<br/>
 						<label>Batch No:</label>
-						<input type="text" th:field = "*{batchNo}"/>
+						<input id="idbatchNo" type="text" th:field = "*{batchNo}"/>
 						<br/>
 						<label>SSCC NO:</label>
-						<input type="text" th:field = "*{sscNo}"/>
+						<input id="idsscNo" type="text" th:field = "*{sscNo}"/>
 						<br/>
-            			<button type="submit" class="btn btn-primary">Search</button>
+            			<button type="submit" class="btn btn-primary" >Search</button>
             			<br/>
 					</form>
 				</div>
-				<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
+				<div >
+					<h2 style="color:Tomato;" th:text="${message}">
+						
+						<input type="text" name="message" value="${message}">
+					</h2>
+				</div>
 			</div>
 		</div>
 	</div>

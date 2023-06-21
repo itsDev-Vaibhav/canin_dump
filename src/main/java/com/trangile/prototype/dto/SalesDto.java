@@ -2,42 +2,49 @@ package com.trangile.prototype.dto;
 
 import java.time.LocalDateTime;
 
-public class PurchaseDto {
-	
+public class SalesDto {
+		
 	private LocalDateTime CreationDate;
 	private String ItemNo;
 	private String Description;
-	private Double QuantityBase;
+	private Double QtytoShipBase;
 	private String LotNo;
 	private LocalDateTime ExpirationDate;
 	private String TNOPAL;
 	private String ManufacturingLotNo;
+	private LocalDateTime ManufacturingDate;
 	private String LocationCode;
+	private String RDD;
 	private String QualityStatus;
 	private String SourceSubType;
 	private String DocumentNo;
-	private String WHSEID;
+	private String SelltoCustomerNo;
+	private String SelltoCustomerName;
 	
-	public PurchaseDto() {
-		
+	public SalesDto() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public PurchaseDto(LocalDateTime creationDate, String itemNo, String description, Double quantityBase, String lotNo,
-			LocalDateTime expirationDate, String tNOPAL, String manufacturingLotNo, String locationCode,
-			String qualityStatus, String sourceSubType, String documentNo, String wHSEID) {
+	public SalesDto(LocalDateTime creationDate, String itemNo, String description, Double qtytoShipBase, String lotNo,
+			LocalDateTime expirationDate, String tNOPAL, String manufacturingLotNo, LocalDateTime manufacturingDate,
+			String locationCode, String rDD, String qualityStatus, String sourceSubType, String documentNo,
+			String selltoCustomerNo, String selltoCustomerName) {
 		CreationDate = creationDate;
 		ItemNo = itemNo;
 		Description = description;
-		QuantityBase = quantityBase;
+		QtytoShipBase = qtytoShipBase;
 		LotNo = lotNo;
 		ExpirationDate = expirationDate;
 		TNOPAL = tNOPAL;
 		ManufacturingLotNo = manufacturingLotNo;
+		ManufacturingDate = manufacturingDate;
 		LocationCode = locationCode;
+		RDD = rDD;
 		QualityStatus = qualityStatus;
 		SourceSubType = sourceSubType;
 		DocumentNo = documentNo;
-		WHSEID = wHSEID;
+		SelltoCustomerNo = selltoCustomerNo;
+		SelltoCustomerName = selltoCustomerName;
 	}
 
 	public LocalDateTime getCreationDate() {
@@ -64,12 +71,12 @@ public class PurchaseDto {
 		Description = description;
 	}
 
-	public Double getQuantityBase() {
-		return QuantityBase;
+	public Double getQtytoShipBase() {
+		return QtytoShipBase;
 	}
 
-	public void setQuantityBase(Double quantityBase) {
-		QuantityBase = quantityBase;
+	public void setQtytoShipBase(Double qtytoShipBase) {
+		QtytoShipBase = qtytoShipBase;
 	}
 
 	public String getLotNo() {
@@ -104,12 +111,28 @@ public class PurchaseDto {
 		ManufacturingLotNo = manufacturingLotNo;
 	}
 
+	public LocalDateTime getManufacturingDate() {
+		return ManufacturingDate;
+	}
+
+	public void setManufacturingDate(LocalDateTime manufacturingDate) {
+		ManufacturingDate = manufacturingDate;
+	}
+
 	public String getLocationCode() {
 		return LocationCode;
 	}
 
 	public void setLocationCode(String locationCode) {
 		LocationCode = locationCode;
+	}
+
+	public String getRDD() {
+		return RDD;
+	}
+
+	public void setRDD(String rDD) {
+		RDD = rDD;
 	}
 
 	public String getQualityStatus() {
@@ -136,11 +159,29 @@ public class PurchaseDto {
 		DocumentNo = documentNo;
 	}
 
-	public String getWHSEID() {
-		return WHSEID;
+	public String getSelltoCustomerNo() {
+		return SelltoCustomerNo;
 	}
 
-	public void setWHSEID(String wHSEID) {
-		WHSEID = wHSEID;
+	public void setSelltoCustomerNo(String selltoCustomerNo) {
+		SelltoCustomerNo = selltoCustomerNo;
+	}
+
+	public String getSelltoCustomerName() {
+		return SelltoCustomerName;
+	}
+
+	public void setSelltoCustomerName(String selltoCustomerName) {
+		SelltoCustomerName = selltoCustomerName;
+	}
+
+	@Override
+	public String toString() {
+		return "SalesDto [CreationDate=" + CreationDate + ", ItemNo=" + ItemNo + ", Description=" + Description
+				+ ", QtytoShipBase=" + QtytoShipBase + ", LotNo=" + LotNo + ", ExpirationDate=" + ExpirationDate
+				+ ", TNOPAL=" + TNOPAL + ", ManufacturingLotNo=" + ManufacturingLotNo + ", ManufacturingDate="
+				+ ManufacturingDate + ", LocationCode=" + LocationCode + ", RDD=" + RDD + ", QualityStatus="
+				+ QualityStatus + ", SourceSubType=" + SourceSubType + ", DocumentNo=" + DocumentNo
+				+ ", SelltoCustomerNo=" + SelltoCustomerNo + ", SelltoCustomerName=" + SelltoCustomerName + "]";
 	}
 }

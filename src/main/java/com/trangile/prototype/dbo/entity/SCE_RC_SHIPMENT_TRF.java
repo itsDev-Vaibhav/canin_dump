@@ -9,10 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "SCE_RC_SHIPMENT_SO_DATA")
-public class SCE_RC_SHIPMENT {
-
-
+@Table(name = "SCE_RC_SHIPMENT_TRF_DATA")
+public class SCE_RC_SHIPMENT_TRF {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
@@ -20,25 +19,24 @@ public class SCE_RC_SHIPMENT {
 	private String WHSEID;
 	private String DocumentNo;
 	private String ExternalDocumentNo;
-	private String Description;
-	private Double PackageTrackingNo;
 	private LocalDateTime ShipmentDate;
-	private String SelltoCustomerNo;
+	private Double EDITransfer_fromCode;
+	private String Transfer_fromCode;
+	private Double EDITransfer_toCode;
+	private String Transfer_toCode;
+	private String EDIMainCarrierNo;
+	private String MainCarrierNo;
 	private String ShippingAgentCode;
 	private String TransportMethod;
 	private String Distance;
 	private String VehicleType;
 	private String VehicleNo;
-	private String ManufacturingLotNo;
-	private String SelltoCustomerName;
-	private Double EDISelltoCustomerNo;
 	private Double Line_No;
 	private String ItemNo;
 	private String UnitofMeasureCode;
-	private Double EDILocationCode;
-	private String LocationCode;
 	private Double QtytoShip;
 	private Double QtytoShipBase;
+	private String Description;
 	private String ReasonCode;
 	private Double EANCode;
 	private String VLCode;
@@ -47,49 +45,50 @@ public class SCE_RC_SHIPMENT {
 	private Double QuantityBase;
 	private LocalDateTime ExpirationDate;
 	private String LotNo;
+	private String ManufacturingLotNo;
 	private String QualityStatus;
 	private String PHRStatus;
 	private String RDD;
 	private LocalDateTime ManufacturingDate;
-	private String SourceSubType;
 	private String TNOPAL;
+	private String SourceSubType;
 	
-	public SCE_RC_SHIPMENT() {
-		// TODO Auto-generated constructor stub
+	public SCE_RC_SHIPMENT_TRF() {
+		
 	}
 
-	public SCE_RC_SHIPMENT(Long id, String mESSAGE_ID, String wHSEID, String documentNo, String externalDocumentNo,
-			String description, Double packageTrackingNo, LocalDateTime shipmentDate, String selltoCustomerNo,
+	public SCE_RC_SHIPMENT_TRF(Long id, String mESSAGE_ID, String wHSEID, String documentNo, String externalDocumentNo,
+			LocalDateTime shipmentDate, Double eDITransfer_fromCode, String transfer_fromCode,
+			Double eDITransfer_toCode, String transfer_toCode, String eDIMainCarrierNo, String mainCarrierNo,
 			String shippingAgentCode, String transportMethod, String distance, String vehicleType, String vehicleNo,
-			String manufacturingLotNo, String selltoCustomerName, Double eDISelltoCustomerNo, Double line_No,
-			String itemNo, String unitofMeasureCode, Double eDILocationCode, String locationCode, Double qtytoShip,
-			Double qtytoShipBase, String reasonCode, Double eANCode, String vLCode, Double qtyperUnitofMeasure,
-			Double quantity, Double quantityBase, LocalDateTime expirationDate, String lotNo, String qualityStatus,
-			String pHRStatus, String rDD, LocalDateTime manufacturingDate, String sourceSubType, String tNOPAL) {
+			Double line_No, String itemNo, String unitofMeasureCode, Double qtytoShip, Double qtytoShipBase,
+			String description, String reasonCode, Double eANCode, String vLCode, Double qtyperUnitofMeasure,
+			Double quantity, Double quantityBase, LocalDateTime expirationDate, String lotNo, String manufacturingLotNo,
+			String qualityStatus, String pHRStatus, String rDD, LocalDateTime manufacturingDate, String tNOPAL,
+			String sourceSubType) {
 		Id = id;
 		MESSAGE_ID = mESSAGE_ID;
 		WHSEID = wHSEID;
 		DocumentNo = documentNo;
 		ExternalDocumentNo = externalDocumentNo;
-		Description = description;
-		PackageTrackingNo = packageTrackingNo;
 		ShipmentDate = shipmentDate;
-		SelltoCustomerNo = selltoCustomerNo;
+		EDITransfer_fromCode = eDITransfer_fromCode;
+		Transfer_fromCode = transfer_fromCode;
+		EDITransfer_toCode = eDITransfer_toCode;
+		Transfer_toCode = transfer_toCode;
+		EDIMainCarrierNo = eDIMainCarrierNo;
+		MainCarrierNo = mainCarrierNo;
 		ShippingAgentCode = shippingAgentCode;
 		TransportMethod = transportMethod;
 		Distance = distance;
 		VehicleType = vehicleType;
 		VehicleNo = vehicleNo;
-		ManufacturingLotNo = manufacturingLotNo;
-		SelltoCustomerName = selltoCustomerName;
-		EDISelltoCustomerNo = eDISelltoCustomerNo;
 		Line_No = line_No;
 		ItemNo = itemNo;
 		UnitofMeasureCode = unitofMeasureCode;
-		EDILocationCode = eDILocationCode;
-		LocationCode = locationCode;
 		QtytoShip = qtytoShip;
 		QtytoShipBase = qtytoShipBase;
+		Description = description;
 		ReasonCode = reasonCode;
 		EANCode = eANCode;
 		VLCode = vLCode;
@@ -98,12 +97,13 @@ public class SCE_RC_SHIPMENT {
 		QuantityBase = quantityBase;
 		ExpirationDate = expirationDate;
 		LotNo = lotNo;
+		ManufacturingLotNo = manufacturingLotNo;
 		QualityStatus = qualityStatus;
 		PHRStatus = pHRStatus;
 		RDD = rDD;
 		ManufacturingDate = manufacturingDate;
-		SourceSubType = sourceSubType;
 		TNOPAL = tNOPAL;
+		SourceSubType = sourceSubType;
 	}
 
 	public Long getId() {
@@ -146,22 +146,6 @@ public class SCE_RC_SHIPMENT {
 		ExternalDocumentNo = externalDocumentNo;
 	}
 
-	public String getDescription() {
-		return Description;
-	}
-
-	public void setDescription(String description) {
-		Description = description;
-	}
-
-	public Double getPackageTrackingNo() {
-		return PackageTrackingNo;
-	}
-
-	public void setPackageTrackingNo(Double packageTrackingNo) {
-		PackageTrackingNo = packageTrackingNo;
-	}
-
 	public LocalDateTime getShipmentDate() {
 		return ShipmentDate;
 	}
@@ -170,12 +154,52 @@ public class SCE_RC_SHIPMENT {
 		ShipmentDate = shipmentDate;
 	}
 
-	public String getSelltoCustomerNo() {
-		return SelltoCustomerNo;
+	public Double getEDITransfer_fromCode() {
+		return EDITransfer_fromCode;
 	}
 
-	public void setSelltoCustomerNo(String selltoCustomerNo) {
-		SelltoCustomerNo = selltoCustomerNo;
+	public void setEDITransfer_fromCode(Double eDITransfer_fromCode) {
+		EDITransfer_fromCode = eDITransfer_fromCode;
+	}
+
+	public String getTransfer_fromCode() {
+		return Transfer_fromCode;
+	}
+
+	public void setTransfer_fromCode(String transfer_fromCode) {
+		Transfer_fromCode = transfer_fromCode;
+	}
+
+	public Double getEDITransfer_toCode() {
+		return EDITransfer_toCode;
+	}
+
+	public void setEDITransfer_toCode(Double eDITransfer_toCode) {
+		EDITransfer_toCode = eDITransfer_toCode;
+	}
+
+	public String getTransfer_toCode() {
+		return Transfer_toCode;
+	}
+
+	public void setTransfer_toCode(String transfer_toCode) {
+		Transfer_toCode = transfer_toCode;
+	}
+
+	public String getEDIMainCarrierNo() {
+		return EDIMainCarrierNo;
+	}
+
+	public void setEDIMainCarrierNo(String eDIMainCarrierNo) {
+		EDIMainCarrierNo = eDIMainCarrierNo;
+	}
+
+	public String getMainCarrierNo() {
+		return MainCarrierNo;
+	}
+
+	public void setMainCarrierNo(String mainCarrierNo) {
+		MainCarrierNo = mainCarrierNo;
 	}
 
 	public String getShippingAgentCode() {
@@ -218,30 +242,6 @@ public class SCE_RC_SHIPMENT {
 		VehicleNo = vehicleNo;
 	}
 
-	public String getManufacturingLotNo() {
-		return ManufacturingLotNo;
-	}
-
-	public void setManufacturingLotNo(String manufacturingLotNo) {
-		ManufacturingLotNo = manufacturingLotNo;
-	}
-
-	public String getSelltoCustomerName() {
-		return SelltoCustomerName;
-	}
-
-	public void setSelltoCustomerName(String selltoCustomerName) {
-		SelltoCustomerName = selltoCustomerName;
-	}
-
-	public Double getEDISelltoCustomerNo() {
-		return EDISelltoCustomerNo;
-	}
-
-	public void setEDISelltoCustomerNo(Double eDISelltoCustomerNo) {
-		EDISelltoCustomerNo = eDISelltoCustomerNo;
-	}
-
 	public Double getLine_No() {
 		return Line_No;
 	}
@@ -266,22 +266,6 @@ public class SCE_RC_SHIPMENT {
 		UnitofMeasureCode = unitofMeasureCode;
 	}
 
-	public Double getEDILocationCode() {
-		return EDILocationCode;
-	}
-
-	public void setEDILocationCode(Double eDILocationCode) {
-		EDILocationCode = eDILocationCode;
-	}
-
-	public String getLocationCode() {
-		return LocationCode;
-	}
-
-	public void setLocationCode(String locationCode) {
-		LocationCode = locationCode;
-	}
-
 	public Double getQtytoShip() {
 		return QtytoShip;
 	}
@@ -296,6 +280,14 @@ public class SCE_RC_SHIPMENT {
 
 	public void setQtytoShipBase(Double qtytoShipBase) {
 		QtytoShipBase = qtytoShipBase;
+	}
+
+	public String getDescription() {
+		return Description;
+	}
+
+	public void setDescription(String description) {
+		Description = description;
 	}
 
 	public String getReasonCode() {
@@ -362,6 +354,14 @@ public class SCE_RC_SHIPMENT {
 		LotNo = lotNo;
 	}
 
+	public String getManufacturingLotNo() {
+		return ManufacturingLotNo;
+	}
+
+	public void setManufacturingLotNo(String manufacturingLotNo) {
+		ManufacturingLotNo = manufacturingLotNo;
+	}
+
 	public String getQualityStatus() {
 		return QualityStatus;
 	}
@@ -394,14 +394,6 @@ public class SCE_RC_SHIPMENT {
 		ManufacturingDate = manufacturingDate;
 	}
 
-	public String getSourceSubType() {
-		return SourceSubType;
-	}
-
-	public void setSourceSubType(String sourceSubType) {
-		SourceSubType = sourceSubType;
-	}
-
 	public String getTNOPAL() {
 		return TNOPAL;
 	}
@@ -410,21 +402,12 @@ public class SCE_RC_SHIPMENT {
 		TNOPAL = tNOPAL;
 	}
 
-	@Override
-	public String toString() {
-		return "SCE_RC_SHIPMENT [Id=" + Id + ", MESSAGE_ID=" + MESSAGE_ID + ", WHSEID=" + WHSEID + ", DocumentNo="
-				+ DocumentNo + ", ExternalDocumentNo=" + ExternalDocumentNo + ", Description=" + Description
-				+ ", PackageTrackingNo=" + PackageTrackingNo + ", ShipmentDate=" + ShipmentDate + ", SelltoCustomerNo="
-				+ SelltoCustomerNo + ", ShippingAgentCode=" + ShippingAgentCode + ", TransportMethod=" + TransportMethod
-				+ ", Distance=" + Distance + ", VehicleType=" + VehicleType + ", VehicleNo=" + VehicleNo
-				+ ", ManufacturingLotNo=" + ManufacturingLotNo + ", SelltoCustomerName=" + SelltoCustomerName
-				+ ", EDISelltoCustomerNo=" + EDISelltoCustomerNo + ", Line_No=" + Line_No + ", ItemNo=" + ItemNo
-				+ ", UnitofMeasureCode=" + UnitofMeasureCode + ", EDILocationCode=" + EDILocationCode
-				+ ", LocationCode=" + LocationCode + ", QtytoShip=" + QtytoShip + ", QtytoShipBase=" + QtytoShipBase
-				+ ", ReasonCode=" + ReasonCode + ", EANCode=" + EANCode + ", VLCode=" + VLCode
-				+ ", QtyperUnitofMeasure=" + QtyperUnitofMeasure + ", Quantity=" + Quantity + ", QuantityBase="
-				+ QuantityBase + ", ExpirationDate=" + ExpirationDate + ", LotNo=" + LotNo + ", QualityStatus="
-				+ QualityStatus + ", PHRStatus=" + PHRStatus + ", RDD=" + RDD + ", ManufacturingDate="
-				+ ManufacturingDate + ", SourceSubType=" + SourceSubType + ", TNOPAL=" + TNOPAL + "]";
+	public String getSourceSubType() {
+		return SourceSubType;
 	}
+
+	public void setSourceSubType(String sourceSubType) {
+		SourceSubType = sourceSubType;
+	}
+
 }

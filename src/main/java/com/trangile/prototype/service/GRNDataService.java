@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import com.trangile.prototype.dbo.entity.SCE_RC_GRN;
 import com.trangile.prototype.dbo.entity.SCE_RC_GRN_NONBOND;
 import com.trangile.prototype.dto.PurchaseDto;
+import com.trangile.prototype.dto.SearchForm;
 
 
 @Component
@@ -30,18 +31,38 @@ public class GRNDataService {
 	}
 
 
-	public List<PurchaseDto> getPurchaseList(String sku) {
-		convertToPurchaseList(grn_service.getResultByItem(sku));
-		convertToNonBoundPurchaseList(grn_non_bound_service.getResultByItem(sku));
+	public List<PurchaseDto> getPurchaseList(SearchForm form) {
+		if(form.getSku().length() != 0 && form.getBatchNo().length() != 0 && form.getSscNo().length() != 0) {
+			convertToPurchaseList(grn_service.getResultByItemANDLotANDTnopal(form.getSku(), form.getBatchNo(), form.getSscNo()));
+			convertToNonBoundPurchaseList(grn_non_bound_service.getResultByItemANDLotANDTnopal(form.getSku(), form.getBatchNo(), form.getSscNo()));
+		} else if (form.getSku().length() != 0 && form.getBatchNo().length() != 0 && form.getSscNo().length() == 0) {
+			convertToPurchaseList(grn_service.getResultByItemANDLot(form.getSku(), form.getBatchNo()));
+			convertToNonBoundPurchaseList(grn_non_bound_service.getResultByItemANDLot(form.getSku(), form.getBatchNo()));
+		} else if (form.getSku().length() != 0 && form.getBatchNo().length() == 0 && form.getSscNo().length() != 0) {
+			convertToPurchaseList(grn_service.getResultByItemANDTnopal(form.getSku(), form.getSscNo()));
+			convertToNonBoundPurchaseList(grn_non_bound_service.getResultByItemANDTnopal(form.getSku(), form.getSscNo()));
+		} else if (form.getSku().length() == 0 && form.getBatchNo().length() != 0 && form.getSscNo().length() != 0) {
+			convertToPurchaseList(grn_service.getResultByLotANDTnopal(form.getBatchNo(), form.getSscNo()));
+			convertToNonBoundPurchaseList(grn_non_bound_service.getResultByLotANDTnopal(form.getBatchNo(), form.getSscNo()));
+		} else if (form.getSku().length() != 0 && form.getBatchNo().length() == 0 && form.getSscNo().length() == 0) {
+			convertToPurchaseList(grn_service.getResultByItem(form.getSku()));
+			convertToNonBoundPurchaseList(grn_non_bound_service.getResultByItem(form.getSku()));
+		} else if (form.getSku().length() == 0 && form.getBatchNo().length() != 0 && form.getSscNo().length() == 0) {
+			convertToPurchaseList(grn_service.getResultByLot(form.getBatchNo()));
+			convertToNonBoundPurchaseList(grn_non_bound_service.getResultByLot(form.getBatchNo()));
+		} else if (form.getSku().length() == 0 && form.getBatchNo().length() == 0 && form.getSscNo().length() != 0) {
+			convertToPurchaseList(grn_service.getResultBytnoPal(form.getSscNo()));
+			convertToNonBoundPurchaseList(grn_non_bound_service.getResultBytnoPal(form.getSscNo()));
+		}
 		return this.purchaseList;
 	}
 
 
 	private void convertToNonBoundPurchaseList(List<SCE_RC_GRN_NONBOND> resultByItem) {
-		for (SCE_RC_GRN_NONBOND sce_RC_GRN : resultByItem) {
+		for (SCE_RC_GRN_NONBOND sce_RC_GRN_NON : resultByItem) {
 			PurchaseDto dto = new PurchaseDto();
-			BeanUtils.copyProperties(sce_RC_GRN, dto);
-			System.out.println("Non Bound: "+dto);
+			BeanUtils.copyProperties(sce_RC_GRN_NON, dto);
+			dto.setCreationDate(sce_RC_GRN_NON.getReceiptDate());
 			this.purchaseList.add(dto);
 		}
 		
@@ -53,7 +74,7 @@ public class GRNDataService {
 		for (SCE_RC_GRN sce_RC_GRN : resultByItem) {
 			PurchaseDto dto = new PurchaseDto();
 			BeanUtils.copyProperties(sce_RC_GRN, dto);
-//			System.out.println(dto);
+			dto.setCreationDate(sce_RC_GRN.getOrderDate());
 			this.purchaseList.add(dto);
 		}
 	}

@@ -63,8 +63,5 @@ public class SearchForm {
 		SearchForm other = (SearchForm) obj;
 		return Objects.equals(batchNo, other.batchNo) && Objects.equals(sku, other.sku)
 				&& Objects.equals(sscNo, other.sscNo);
-	}
-	
-	
-	
+	}	
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.trangile.prototype.dto.SearchForm;
 import com.trangile.prototype.security.entity.User;
@@ -28,8 +29,10 @@ public class UserController {
 	    private UserValidator userValidator;
 
 	@GetMapping({ "/", "/welcome" })
-	public String welcome(Model model) {
+	public String getwelcome(Model model) {
 		model.addAttribute("searchForm", new SearchForm());
+		Object attribute = model.getAttribute("message");
+		model.addAttribute("message", "");
 		return "welcome";
 	}
 

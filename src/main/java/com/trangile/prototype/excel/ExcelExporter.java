@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.trangile.prototype.dbo.entity.SCE_RC_GRN;
-import com.trangile.prototype.dbo.entity.SCE_RC_SHIPMENT;
+import com.trangile.prototype.dbo.entity.SCE_RC_STOCK_ADJ;
 import com.trangile.prototype.dto.PurchaseDto;
+import com.trangile.prototype.dto.SalesDto;
 import com.trangile.prototype.excel.writers.InventoryExcelWriter;
 import com.trangile.prototype.excel.writers.PurchaseExcelWriter;
 import com.trangile.prototype.excel.writers.SalesExcelWriter;
@@ -27,7 +27,7 @@ public class ExcelExporter {
 		workbook = new XSSFWorkbook();
 	}
 
-	public void export(HttpServletResponse response, List<PurchaseDto> purchaseData, List<SCE_RC_SHIPMENT> salesData) throws IOException {
+	public void export(HttpServletResponse response, List<PurchaseDto> purchaseData, List<SalesDto> salesData, List<SCE_RC_STOCK_ADJ> inventoryList) throws IOException {
 		response.setContentType("application/octet-stream");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
         String currentDateTime = dateFormatter.format(new Date());
@@ -46,14 +46,20 @@ public class ExcelExporter {
         if (salesData != null && salesData.size() > 0) {
 			sw = new SalesExcelWriter(workbook, salesData);
 		} else {
-			sw = new SalesExcelWriter(workbook, new ArrayList<SCE_RC_SHIPMENT>());
+			sw = new SalesExcelWriter(workbook, new ArrayList<SalesDto>());
 		}		
 		sw.writeHeaderLine();
-		InventoryExcelWriter iw = new InventoryExcelWriter(workbook);
+		InventoryExcelWriter iw = null;
+		if (inventoryList != null && inventoryList.size() > 0) {
+			iw =  new InventoryExcelWriter(workbook, inventoryList);
+		} else {
+			iw =  new InventoryExcelWriter(workbook, new ArrayList<>());
+		}
 		iw.writeHeaderLine();
         ServletOutputStream outputStream = response.getOutputStream();
         workbook.write(outputStream);
         workbook.close();
+        outputStream.flush();
         outputStream.close();
 	}
 
