@@ -3,6 +3,8 @@ package com.trangile.prototype.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,6 +17,9 @@ import com.trangile.prototype.dto.SearchForm;
 @Component
 public class ShipmentDataService {
 	
+	final static Logger logger = LoggerFactory.getLogger(ShipmentDataService.class);
+
+	
 	@Autowired
 	private ShipmentService shipmentService;
 	
@@ -25,6 +30,7 @@ public class ShipmentDataService {
 	List<SalesDto> salesList = null;
 	
 	public List<SalesDto> getSalesList(SearchForm form) {
+		logger.info("Inside getSalesList(): ");
 		if(form.getSku().length() != 0 && form.getBatchNo().length() != 0 && form.getSscNo().length() != 0) {
 			convertToSalesList(shipmentService.getResultByItemANDLotANDTnopal(form.getSku(), form.getBatchNo(), form.getSscNo()));
 			convertToSalesListTRF(shipmentTRFService.getResultByItemANDLotANDTnopal(form.getSku(), form.getBatchNo(), form.getSscNo()));
@@ -46,7 +52,8 @@ public class ShipmentDataService {
 		} else if (form.getSku().length() == 0 && form.getBatchNo().length() == 0 && form.getSscNo().length() != 0) {
 			convertToSalesList(shipmentService.getResultBytnoPal(form.getSscNo()));
 			convertToSalesListTRF(shipmentTRFService.getResultBytnoPal(form.getSscNo()));
-		} 
+		}
+		logger.info("Returing from getSalesList(): ");
 		return this.salesList;
 	}
 

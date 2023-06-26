@@ -38,10 +38,10 @@
 			<form id="logoutForm" method="POST" th:action="@{/logout}">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			</form>
-			<h2>Welcome <span sec:authentication="name"></span></h2>
+			<h2>Welcome <span sec:authentication="name"></span>!</h2>
 			<div align="center">
 				<div style="border-style:solid; width:500px">
-					<h4>Search</h4>
+					<h4>Transactions</h4>
 					<form role="form" method="post" th:action="@{/rc/search}" th:object="${searchForm}">
 						<label>Item:</label>
 						<input id="typeSKU" type="text" th:field = "*{sku}"/>
@@ -52,16 +52,17 @@
 						<label>SSCC NO:</label>
 						<input id="idsscNo" type="text" th:field = "*{sscNo}"/>
 						<br/>
-            			<button type="submit" class="btn btn-primary" >Search</button>
+            			<button type="submit" class="btn btn-primary" onclick="return getMsg()">Search</button>
             			<br/>
 					</form>
 				</div>
-				<div >
+				<div id="empty">
 					<h2 style="color:Tomato;" th:text="${message}">
-						
 						<input type="text" name="message" value="${message}">
 					</h2>
+					
 				</div>
+				
 			</div>
 		</div>
 	</div>

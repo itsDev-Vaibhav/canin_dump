@@ -3,6 +3,8 @@ package com.trangile.prototype.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,6 +17,8 @@ import com.trangile.prototype.dto.SearchForm;
 
 @Component
 public class GRNDataService {
+	
+	final static Logger logger = LoggerFactory.getLogger(GRNDataService.class);
 	
 	@Autowired
 	private GRNService grn_service;
@@ -32,6 +36,7 @@ public class GRNDataService {
 
 
 	public List<PurchaseDto> getPurchaseList(SearchForm form) {
+		logger.info("Inside getPurchaseList()");
 		if(form.getSku().length() != 0 && form.getBatchNo().length() != 0 && form.getSscNo().length() != 0) {
 			convertToPurchaseList(grn_service.getResultByItemANDLotANDTnopal(form.getSku(), form.getBatchNo(), form.getSscNo()));
 			convertToNonBoundPurchaseList(grn_non_bound_service.getResultByItemANDLotANDTnopal(form.getSku(), form.getBatchNo(), form.getSscNo()));
@@ -54,6 +59,7 @@ public class GRNDataService {
 			convertToPurchaseList(grn_service.getResultBytnoPal(form.getSscNo()));
 			convertToNonBoundPurchaseList(grn_non_bound_service.getResultBytnoPal(form.getSscNo()));
 		}
+		logger.info("Returning from getPurchaseList()");
 		return this.purchaseList;
 	}
 

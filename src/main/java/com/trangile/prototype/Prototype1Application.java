@@ -23,33 +23,33 @@ import com.trangile.prototype.security.repository.UserRepository;
 					HibernateJpaAutoConfiguration.class,
 					DataSourceTransactionManagerAutoConfiguration.class })
 @EnableTransactionManagement
-public class Prototype1Application implements CommandLineRunner{
+public class Prototype1Application {
 	
-	@Autowired
-	private RoleRepository roleRepository; 
-	
-	@Autowired
-	private UserRepository userRepository; 
-	
-	@Autowired
-	private BCryptPasswordEncoder encoder;
+//	@Autowired
+//	private RoleRepository roleRepository; 
+//	
+//	@Autowired
+//	private UserRepository userRepository; 
+//	
+//	@Autowired
+//	private BCryptPasswordEncoder encoder;
 	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Prototype1Application.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		Role role = new Role();
-		role.setRoleName("USER");
-		roleRepository.save(role);
-		User user = new User();
-		user.setUsername("Royal_User");
-		user.setPassword(encoder.encode("Royal_User@123"));
-		Set<Role> roles = new HashSet<>();
-		roles.add(role);
-		user.setRoles(roles);
-		userRepository.save(user);
-	}
+//	@Override
+//	public void run(String... args) throws Exception {
+//		Role role = new Role();
+//		role.setRoleName("USER");
+//		roleRepository.save(role);
+//		User user = new User();
+//		user.setUsername("Royal_User");
+//		user.setPassword(encoder.encode("Royal_User@123"));
+//		Set<Role> roles = new HashSet<>();
+//		roles.add(role);
+//		user.setRoles(roles);
+//		userRepository.save(user);
+//	}
 }
