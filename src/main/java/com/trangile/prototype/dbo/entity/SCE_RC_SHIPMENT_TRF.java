@@ -52,6 +52,7 @@ public class SCE_RC_SHIPMENT_TRF {
 	private LocalDateTime ManufacturingDate;
 	private String TNOPAL;
 	private String SourceSubType;
+	private String SelltoCustomerName;
 	
 	public SCE_RC_SHIPMENT_TRF() {
 		
@@ -65,7 +66,7 @@ public class SCE_RC_SHIPMENT_TRF {
 			String description, String reasonCode, Double eANCode, String vLCode, Double qtyperUnitofMeasure,
 			Double quantity, Double quantityBase, LocalDateTime expirationDate, String lotNo, String manufacturingLotNo,
 			String qualityStatus, String pHRStatus, String rDD, LocalDateTime manufacturingDate, String tNOPAL,
-			String sourceSubType) {
+			String sourceSubType, String selltoCustomerName) {
 		Id = id;
 		MESSAGE_ID = mESSAGE_ID;
 		WHSEID = wHSEID;
@@ -104,6 +105,7 @@ public class SCE_RC_SHIPMENT_TRF {
 		ManufacturingDate = manufacturingDate;
 		TNOPAL = tNOPAL;
 		SourceSubType = sourceSubType;
+		SelltoCustomerName = selltoCustomerName;
 	}
 
 	public Long getId() {
@@ -409,5 +411,53 @@ public class SCE_RC_SHIPMENT_TRF {
 	public void setSourceSubType(String sourceSubType) {
 		SourceSubType = sourceSubType;
 	}
+
+	public String getSelltoCustomerName() {
+		return SelltoCustomerName;
+	}
+
+	public void setSelltoCustomerName(String selltoCustomerName) {
+		SelltoCustomerName = selltoCustomerName;
+	}
+
+	@Override
+	public String toString() {
+		return "SCE_RC_SHIPMENT_TRF [Id=" + Id + ", MESSAGE_ID=" + MESSAGE_ID + ", WHSEID=" + WHSEID + ", DocumentNo="
+				+ DocumentNo + ", ExternalDocumentNo=" + ExternalDocumentNo + ", ShipmentDate=" + ShipmentDate
+				+ ", EDITransfer_fromCode=" + EDITransfer_fromCode + ", Transfer_fromCode=" + Transfer_fromCode
+				+ ", EDITransfer_toCode=" + EDITransfer_toCode + ", Transfer_toCode=" + Transfer_toCode
+				+ ", EDIMainCarrierNo=" + EDIMainCarrierNo + ", MainCarrierNo=" + MainCarrierNo + ", ShippingAgentCode="
+				+ ShippingAgentCode + ", TransportMethod=" + TransportMethod + ", Distance=" + Distance
+				+ ", VehicleType=" + VehicleType + ", VehicleNo=" + VehicleNo + ", Line_No=" + Line_No + ", ItemNo="
+				+ ItemNo + ", UnitofMeasureCode=" + UnitofMeasureCode + ", QtytoShip=" + QtytoShip + ", QtytoShipBase="
+				+ QtytoShipBase + ", Description=" + Description + ", ReasonCode=" + ReasonCode + ", EANCode=" + EANCode
+				+ ", VLCode=" + VLCode + ", QtyperUnitofMeasure=" + QtyperUnitofMeasure + ", Quantity=" + Quantity
+				+ ", QuantityBase=" + QuantityBase + ", ExpirationDate=" + ExpirationDate + ", LotNo=" + LotNo
+				+ ", ManufacturingLotNo=" + ManufacturingLotNo + ", QualityStatus=" + QualityStatus + ", PHRStatus="
+				+ PHRStatus + ", RDD=" + RDD + ", ManufacturingDate=" + ManufacturingDate + ", TNOPAL=" + TNOPAL
+				+ ", SourceSubType=" + SourceSubType + ", SelltoCustomerName=" + SelltoCustomerName + ", getId()="
+				+ getId() + ", getMESSAGE_ID()=" + getMESSAGE_ID() + ", getWHSEID()=" + getWHSEID()
+				+ ", getDocumentNo()=" + getDocumentNo() + ", getExternalDocumentNo()=" + getExternalDocumentNo()
+				+ ", getShipmentDate()=" + getShipmentDate() + ", getEDITransfer_fromCode()="
+				+ getEDITransfer_fromCode() + ", getTransfer_fromCode()=" + getTransfer_fromCode()
+				+ ", getEDITransfer_toCode()=" + getEDITransfer_toCode() + ", getTransfer_toCode()="
+				+ getTransfer_toCode() + ", getEDIMainCarrierNo()=" + getEDIMainCarrierNo() + ", getMainCarrierNo()="
+				+ getMainCarrierNo() + ", getShippingAgentCode()=" + getShippingAgentCode() + ", getTransportMethod()="
+				+ getTransportMethod() + ", getDistance()=" + getDistance() + ", getVehicleType()=" + getVehicleType()
+				+ ", getVehicleNo()=" + getVehicleNo() + ", getLine_No()=" + getLine_No() + ", getItemNo()="
+				+ getItemNo() + ", getUnitofMeasureCode()=" + getUnitofMeasureCode() + ", getQtytoShip()="
+				+ getQtytoShip() + ", getQtytoShipBase()=" + getQtytoShipBase() + ", getDescription()="
+				+ getDescription() + ", getReasonCode()=" + getReasonCode() + ", getEANCode()=" + getEANCode()
+				+ ", getVLCode()=" + getVLCode() + ", getQtyperUnitofMeasure()=" + getQtyperUnitofMeasure()
+				+ ", getQuantity()=" + getQuantity() + ", getQuantityBase()=" + getQuantityBase()
+				+ ", getExpirationDate()=" + getExpirationDate() + ", getLotNo()=" + getLotNo()
+				+ ", getManufacturingLotNo()=" + getManufacturingLotNo() + ", getQualityStatus()=" + getQualityStatus()
+				+ ", getPHRStatus()=" + getPHRStatus() + ", getRDD()=" + getRDD() + ", getManufacturingDate()="
+				+ getManufacturingDate() + ", getTNOPAL()=" + getTNOPAL() + ", getSourceSubType()=" + getSourceSubType()
+				+ ", getSelltoCustomerName()=" + getSelltoCustomerName() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	}
+	
+	
 
 }

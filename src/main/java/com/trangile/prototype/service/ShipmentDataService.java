@@ -58,23 +58,51 @@ public class ShipmentDataService {
 	}
 
 
-	private void convertToSalesListTRF(List<SCE_RC_SHIPMENT_TRF> resultByItem) {
-		for (SCE_RC_SHIPMENT_TRF shipment : resultByItem) {
-			SalesDto dto = new SalesDto();
-			BeanUtils.copyProperties(shipment, dto);
-			dto.setCreationDate(shipment.getShipmentDate());
-			this.salesList.add(dto);
+	private void convertToSalesListTRF(List<SCE_RC_SHIPMENT_TRF> resultByItemTRF) {
+		for (SCE_RC_SHIPMENT_TRF shipment_TRF : resultByItemTRF) {
+			SalesDto dtoTRF = new SalesDto();
+			dtoTRF.setCreationDate(shipment_TRF.getShipmentDate());
+			dtoTRF.setItemNo(shipment_TRF.getItemNo());
+			dtoTRF.setDescription(shipment_TRF.getDescription());
+			dtoTRF.setQtytoShipBase(shipment_TRF.getQtytoShipBase() * -1);
+			dtoTRF.setLotNo(shipment_TRF.getLotNo());
+			dtoTRF.setExpirationDate(shipment_TRF.getExpirationDate());
+			dtoTRF.setTNOPAL(shipment_TRF.getTNOPAL());
+			dtoTRF.setManufacturingLotNo(shipment_TRF.getManufacturingLotNo());
+			dtoTRF.setManufacturingDate(shipment_TRF.getManufacturingDate());
+			dtoTRF.setLocationCode(shipment_TRF.getTransfer_fromCode());
+			dtoTRF.setRDD(shipment_TRF.getRDD());
+			dtoTRF.setQualityStatus(shipment_TRF.getQualityStatus());
+			dtoTRF.setSourceSubType(shipment_TRF.getSourceSubType());
+			dtoTRF.setDocumentNo(shipment_TRF.getDocumentNo());
+			dtoTRF.setSelltoCustomerNo(shipment_TRF.getTransfer_toCode());
+			dtoTRF.setSelltoCustomerName(shipment_TRF.getSelltoCustomerName());
+			this.salesList.add(dtoTRF);
 		}
 	}
 
 
-	private void convertToSalesList(List<SCE_RC_SHIPMENT> resultByItem) {
+	private void convertToSalesList(List<SCE_RC_SHIPMENT> resultByItemShip) {
 		this.salesList = new ArrayList<>();
-		for (SCE_RC_SHIPMENT shipment : resultByItem) {
-			SalesDto dto = new SalesDto();
-			BeanUtils.copyProperties(shipment, dto);
-			dto.setCreationDate(shipment.getShipmentDate());
-			this.salesList.add(dto);
+		for (SCE_RC_SHIPMENT shipment : resultByItemShip) {
+			SalesDto sdto = new SalesDto();
+			sdto.setCreationDate(shipment.getShipmentDate());
+			sdto.setItemNo(shipment.getItemNo());
+			sdto.setDescription(shipment.getDescription());
+			sdto.setQtytoShipBase(shipment.getQtytoShipBase() * -1);
+			sdto.setLotNo(shipment.getLotNo());
+			sdto.setExpirationDate(shipment.getExpirationDate());
+			sdto.setTNOPAL(shipment.getTNOPAL());
+			sdto.setManufacturingLotNo(shipment.getManufacturingLotNo());
+			sdto.setManufacturingDate(shipment.getManufacturingDate());
+			sdto.setLocationCode(shipment.getLocationCode());
+			sdto.setRDD(shipment.getRDD());
+			sdto.setQualityStatus(shipment.getQualityStatus());
+			sdto.setSourceSubType(shipment.getSourceSubType());
+			sdto.setDocumentNo(shipment.getDocumentNo());
+			sdto.setSelltoCustomerNo(shipment.getSelltoCustomerNo());
+			sdto.setSelltoCustomerName(shipment.getSelltoCustomerName());
+			this.salesList.add(sdto);
 		}
 	}
 }

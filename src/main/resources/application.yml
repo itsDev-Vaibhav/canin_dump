@@ -2,7 +2,11 @@ server:
   servlet:
     session:
       timeout: 2m
-  port: 8080
+  port: 9001
+  error:
+    include-stacktrace: always
+    include-exception: true
+    include-message: always
   
   
 logging:
@@ -26,7 +30,12 @@ spring:
     show-sql: true
     properties:
       dialect: org.hibernate.dialect.SQLServer2016Dialect
-    
+  cache:
+    type: none
+  messages:
+    basename: validation
+  session:
+    store-type: none    
 ---
 ###### local server details
 spring:

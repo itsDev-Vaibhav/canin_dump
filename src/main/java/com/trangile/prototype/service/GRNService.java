@@ -25,9 +25,12 @@ public class GRNService {
 	
 	public List<SCE_RC_GRN> getResultByItem(String sku) {
 		logger.info("Inside getResultByItem()");
-		List<SCE_RC_GRN> list = repo.findAllByItem(sku);
+		List<SCE_RC_GRN> list = repo.resultByItem(sku);
 		if(list.size() > 0) {
 			logger.info("Returning from getResultByItem(): " +list.size());
+//			for (SCE_RC_GRN sce_RC_GRN : list) {
+//				System.out.println(sce_RC_GRN);
+//			}
 			return list;
 		}
 		logger.info("Returning from getResultByItem(): " +list.size());

@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -66,10 +65,21 @@ public class GRNDataService {
 
 	private void convertToNonBoundPurchaseList(List<SCE_RC_GRN_NONBOND> resultByItem) {
 		for (SCE_RC_GRN_NONBOND sce_RC_GRN_NON : resultByItem) {
-			PurchaseDto dto = new PurchaseDto();
-			BeanUtils.copyProperties(sce_RC_GRN_NON, dto);
-			dto.setCreationDate(sce_RC_GRN_NON.getReceiptDate());
-			this.purchaseList.add(dto);
+			PurchaseDto dtoNON = new PurchaseDto();
+			dtoNON.setCreationDate(sce_RC_GRN_NON.getReceiptDate());
+			dtoNON.setItemNo(sce_RC_GRN_NON.getItemNo());
+			dtoNON.setDescription(sce_RC_GRN_NON.getDescription());
+			dtoNON.setQuantityBase(Double.valueOf(sce_RC_GRN_NON.getQuantityBase()));
+			dtoNON.setLotNo(sce_RC_GRN_NON.getLotNo());
+			dtoNON.setExpirationDate(sce_RC_GRN_NON.getExpirationDate());
+			dtoNON.setTNOPAL(sce_RC_GRN_NON.getTNOPAL());
+			dtoNON.setManufacturingLotNo(sce_RC_GRN_NON.getManufacturingLotNo());
+			dtoNON.setLocationCode(sce_RC_GRN_NON.getTransfertoCode());
+			dtoNON.setQualityStatus(sce_RC_GRN_NON.getQualityStatus());
+			dtoNON.setSourceSubType(sce_RC_GRN_NON.getSourceSubType());
+			dtoNON.setDocumentNo(sce_RC_GRN_NON.getDocumentNo());
+			dtoNON.setWHSEID(sce_RC_GRN_NON.getWHSEID());
+			this.purchaseList.add(dtoNON);
 		}
 		
 	}
@@ -79,8 +89,19 @@ public class GRNDataService {
 		this.purchaseList = new ArrayList<>();
 		for (SCE_RC_GRN sce_RC_GRN : resultByItem) {
 			PurchaseDto dto = new PurchaseDto();
-			BeanUtils.copyProperties(sce_RC_GRN, dto);
 			dto.setCreationDate(sce_RC_GRN.getOrderDate());
+			dto.setItemNo(sce_RC_GRN.getItemNo());
+			dto.setDescription(sce_RC_GRN.getDescription());
+			dto.setQuantityBase(Double.valueOf(sce_RC_GRN.getQuantityBase()));
+			dto.setLotNo(sce_RC_GRN.getLotNo());
+			dto.setExpirationDate(sce_RC_GRN.getExpirationDate());
+			dto.setTNOPAL(sce_RC_GRN.getTNOPAL());
+			dto.setManufacturingLotNo(sce_RC_GRN.getManufacturingLotNo());
+			dto.setLocationCode(sce_RC_GRN.getLocationCode());
+			dto.setQualityStatus(sce_RC_GRN.getQualityStatus());
+			dto.setSourceSubType(sce_RC_GRN.getSourceSubType());
+			dto.setDocumentNo(sce_RC_GRN.getDocumentNo());
+			dto.setWHSEID(sce_RC_GRN.getWHSEID());
 			this.purchaseList.add(dto);
 		}
 	}

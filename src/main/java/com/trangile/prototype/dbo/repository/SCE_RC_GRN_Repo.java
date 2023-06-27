@@ -11,8 +11,8 @@ import com.trangile.prototype.dbo.entity.SCE_RC_GRN;
 
 public interface SCE_RC_GRN_Repo extends JpaRepository<SCE_RC_GRN, Serializable> {
 	
-	@Query(value = "SELECT s FROM SCE_RC_GRN AS s WHERE s.ItemNo = :itemNo")
-	List<SCE_RC_GRN> findAllByItem(@Param("itemNo") String itemNo);
+	@Query(value = "SELECT * FROM SCE_RC_GRN_DATA WHERE SCE_RC_GRN_DATA.ItemNo = :itemNo", nativeQuery = true)
+	List<SCE_RC_GRN> resultByItem(@Param("itemNo") String itemNo);
 	
 	@Query(value = "SELECT s FROM SCE_RC_GRN AS s WHERE s.LotNo = :lotNo")
 	List<SCE_RC_GRN> findAllByLotNo(@Param("lotNo") String lotNo);
