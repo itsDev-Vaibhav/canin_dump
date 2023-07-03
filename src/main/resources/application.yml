@@ -1,8 +1,9 @@
 server:
+  address: 127.0.0.1
+  port: 9001
   servlet:
     session:
       timeout: 2m
-  port: 9001
   error:
     include-stacktrace: always
     include-exception: true

@@ -72,7 +72,6 @@ public class InventoryExcelWriter {
         font.setFontHeight(10);
         style.setFont(font);       
         for (SCE_RC_STOCK_ADJ stockADJ : inventoryData) {
-        	System.out.println(stockADJ);
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0; 
             createCell(row, columnCount++, nullString(stockADJ.getPostingDate().toString()), style);

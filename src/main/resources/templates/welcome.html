@@ -7,28 +7,59 @@
 	<title>Search Dashboard</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-		<style type="text/css">
-	label {
-		display: inline-block;
-		width: 200px;
-		margin: 5px;
-		text-align: left;
-	}
-	input[type=text], input[type=password], select {
-		display: inline-block;
-		width: 200px;
-	}
-	input[type=radio] {
-		margin-left: 45px;
-	}
-	input[type=checkbox] {
-		margin-right: 190px;
-	}	
-	button {
-		padding: 5px;
-		margin: 10px;
-	}
-</style>
+	<style type="text/css">
+		label {
+			display: inline-block;
+			width: 200px;
+			margin: 5px;
+			text-align: left;
+		}
+
+		input[type=text],
+		input[type=password],
+		select {
+			display: inline-block;
+			width: 200px;
+		}
+
+		input[type=radio] {
+			margin-left: 45px;
+		}
+
+		input[type=checkbox] {
+			margin-right: 190px;
+		}
+
+		button {
+			padding: 5px;
+			margin: 10px;
+		}
+
+		#popupContainer {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+
+		#popupContent {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: white;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+		}
+
+		#closePopupButton {
+			margin-top: 10px;
+		}
+	</style>
 </head>
 
 <body>
@@ -42,31 +73,37 @@
 			<div align="center">
 				<div style="border-style:solid; width:500px">
 					<h4>Transactions</h4>
-					<form role="form" method="post" th:action="@{/rc/search}" th:object="${searchForm}">
+					<form role="form" id="idForm" method="post" th:action="@{/rc/search}" th:object="${searchForm}">
 						<label>Item:</label>
-						<input id="typeSKU" type="text" th:field = "*{sku}"/>
-						<br/>
+						<input id="idskuNo" type="text" th:field="*{sku}" />
+						<br />
 						<label>Batch No:</label>
-						<input id="idbatchNo" type="text" th:field = "*{batchNo}"/>
-						<br/>
+						<input id="idbatchNo" type="text" th:field="*{batchNo}" />
+						<br />
 						<label>SSCC NO:</label>
-						<input id="idsscNo" type="text" th:field = "*{sscNo}"/>
-						<br/>
-            			<button type="submit" class="btn btn-primary" onclick="return getMsg()">Search</button>
-            			<br/>
+						<input id="idsscNo" type="text" th:field="*{sscNo}" />
+						<br />
+						<!--
+						<button type="button" class="btn btn-primary" onclick="return validateForm()">Search</button>
+						-->
+						<button type="submit" class="btn btn-primary">Search</button>
+						<br />
 					</form>
 				</div>
-				<div id="empty">
-					<h2 style="color:Tomato;" th:text="${message}">
-						<input type="text" name="message" value="${message}">
-					</h2>
-					
+				<!-- Create the pop-up container -->
+				<div id="popupContainer">
+					<div id="popupContent">
+						<p id="popupMessage"></p>
+						<button id="closePopupButton" class="btn btn-primary">Close</button>
+					</div>
 				</div>
-				
 			</div>
 		</div>
 	</div>
-
+	<script th:inline="javascript">
+		var appAddress = [[${@environment.getProperty('server.address')}]];
+		var appPort = [[${@environment.getProperty('server.port')}]];
+	</script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
