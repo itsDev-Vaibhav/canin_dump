@@ -35,5 +35,11 @@ public class CheckController {
 	public ResponseEntity<?> checkSSC(@RequestParam(name = "sscNumber") String value){
 		return new ResponseEntity<>(cService.getTNOPALCount(value), HttpStatus.OK);
 	}
+	
+	
+//	@GetMapping(value = "/validateOwner")
+//	public ResponseEntity<?> checkOwner(@RequestParam(name = "owner") String value){
+//		return new ResponseEntity<>(cService.getOwnerCount(value), HttpStatus.OK);
+//	}
 
 }

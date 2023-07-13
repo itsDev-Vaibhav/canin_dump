@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.trangile.prototype.dto.SearchForm;
+import com.trangile.prototype.dto.SearchInventoryDto;
 import com.trangile.prototype.security.entity.User;
 import com.trangile.prototype.security.service.SecurityService;
 import com.trangile.prototype.service.UserService;
@@ -47,6 +48,7 @@ public class UserController {
 		return "login";
 	}
 
+	
 	@PostMapping("/registration")
 	public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
 		userValidator.validate(userForm, bindingResult);
@@ -66,5 +68,17 @@ public class UserController {
         model.addAttribute("userForm", new User());
         return "registration";
     }
+	
+	@GetMapping("/inventory")
+	public String inventory(Model model, String error, String logout) {
+		if (securityService.isAuthenticated()) {
+			SearchInventoryDto dto = new SearchInventoryDto();
+			model.addAttribute("ownerSearch", dto);
+			return "inventory";
+		} else {
+			return "redirect:/";
+		}
+	}
+
 
 }

@@ -3,6 +3,7 @@ package com.trangile.prototype.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.trangile.prototype.dbo.repository.UCBInventoryRepo;
 import com.trangile.prototype.dbo.repository.RC_CHECK_BATCH_NUMBER_Repo;
 import com.trangile.prototype.dbo.repository.RC_CHECK_ITEM_NUMBER_Repo;
 import com.trangile.prototype.dbo.repository.RC_CHECK_TNOPAL_Repo;
@@ -18,6 +19,9 @@ public class CountService {
 	
 	@Autowired
 	private RC_CHECK_TNOPAL_Repo trepo;
+	
+	@Autowired
+	private UCBInventoryRepo inventoryrepo;
 
 	
 	
@@ -36,6 +40,12 @@ public class CountService {
 	public Long getTNOPALCount(String sscNo) {
 		return trepo.countTnoPAL(sscNo);
 	}
-	
+
+
+
+//	public Long getOwnerCount(String value) {
+//		return inventoryrepo.getCount(value);
+//	}
+//	
 
 }

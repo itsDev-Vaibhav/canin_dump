@@ -19,7 +19,7 @@
 			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
 			<fileNamePattern>D:\\traceability_software\\apilogs\\royal-cannin-dbApp_%d{yyyy-MM-dd}.%i.log</fileNamePattern>
 			<maxFileSize>2MB</maxFileSize>
-			<maxHistory>05</maxHistory>
+			<maxHistory>07</maxHistory>
 			<totalSizeCap>10MB</totalSizeCap>
 			<cleanHistoryOnStart>true</cleanHistoryOnStart>
 		</rollingPolicy>
