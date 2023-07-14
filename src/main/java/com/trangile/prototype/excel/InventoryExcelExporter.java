@@ -40,12 +40,14 @@ public class InventoryExcelExporter {
 	public void exportInventory(HttpServletResponse response, List<UCBInventoryEntity> allRecords) throws IOException {
 		logger.info("inside exportInventory with: " +allRecords.size());
 //		response.setContentType("application/octet-stream");
+		String[] classNames = allRecords.get(allRecords.size() - 1).getClass().getCanonicalName().split("\\.");
 		response.setContentType("text/csv");
+		String namePrefix = classNames[classNames.length - 1].replace("Entity", "");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
         String currentDateTime = dateFormatter.format(new Date());
         String headerKey = "Content-Disposition";
 //        String headerValue = "attachment; filename=royal_canin_inventory_" + currentDateTime + ".xlsx";
-        String headerValue = "attachment; filename=royal_canin_inventory_" + currentDateTime + ".csv";
+        String headerValue = "attachment; filename="+ namePrefix + "__"+currentDateTime + ".csv";
         response.setHeader(headerKey, headerValue);
         if (allRecords == null || allRecords.size() == 0) {
 			allRecords = new ArrayList<>();

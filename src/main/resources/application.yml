@@ -19,7 +19,7 @@ logging:
 spring:
   profiles:
     active:
-    - "local"
+    - "dev"
   main:
     jvmArgs: -Xmx512m
     banner-mode: off
@@ -28,7 +28,7 @@ spring:
     cache: false
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
     properties:
       dialect: org.hibernate.dialect.SQLServer2016Dialect
@@ -104,7 +104,22 @@ spring:
        
 ##### hosting server   
 server:
-  address: 192.168.50.176
-  servlet:
-    session:
-      timeout: 120s
+  address: 127.0.0.1
+########DB DETAILS
+
+security:
+  datasource:
+    username: fmluser
+    password: fml123
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://INP106A\\MSSQLSERVER2019:1443;databaseName=FMLPROD;encrypt=true;trustServerCertificate=true;
+
+      
+dbo:
+  datasource:
+    username: fmluser
+    password: fml123
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://INP106A\\MSSQLSERVER2019:1443;databaseName=FMLPROD;encrypt=true;trustServerCertificate=true;
+
+  

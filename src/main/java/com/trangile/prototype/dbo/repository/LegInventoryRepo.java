@@ -10,7 +10,7 @@ import com.trangile.prototype.dbo.entity.LegInventoryEntity;
 public interface LegInventoryRepo extends JpaRepository<LegInventoryEntity, java.io.Serializable> {
 	
 	
-	@Query(value = "SELECT * FROM SCE_LEGRAND_INVENTORY_DUMP", nativeQuery = true)
+	@Query(value = "SELECT * FROM SCE_LEGRAND_INVENTORY_DUMP WHERE OnHand > 0 ORDER BY(Item)", nativeQuery = true)
 	List<LegInventoryEntity> getAllRecords();
 	
 	
