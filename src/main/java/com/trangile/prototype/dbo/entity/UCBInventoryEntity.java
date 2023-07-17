@@ -1,5 +1,6 @@
 package com.trangile.prototype.dbo.entity;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -36,6 +37,10 @@ public class UCBInventoryEntity {
 	private String Lottable10;
 	private String Lottable11;
 	private String Lottable12;
+	private LocalDateTime transdate;
+	
+	
+	
 	
 	public UCBInventoryEntity() {
 		
@@ -45,7 +50,7 @@ public class UCBInventoryEntity {
 			String description, String lPN, String lot, String location, Double onHand, Double available, String status,
 			String lottable01, String lottable02, String lottable03, String manufacturingDate, String expirationDate,
 			String lottable06, String lottable07, String lottable08, String lottable09, String lottable10,
-			String lottable11, String lottable12) {
+			String lottable11, String lottable12, LocalDateTime transdate) {
 		Id = id;
 		MESSAGE_ID = mESSAGE_ID;
 		WHSEID = wHSEID;
@@ -71,6 +76,7 @@ public class UCBInventoryEntity {
 		Lottable10 = lottable10;
 		Lottable11 = lottable11;
 		Lottable12 = lottable12;
+		this.transdate = transdate;
 	}
 
 	public Long getId() {
@@ -273,11 +279,19 @@ public class UCBInventoryEntity {
 		Lottable12 = lottable12;
 	}
 
+	public LocalDateTime getTransdate() {
+		return transdate;
+	}
+
+	public void setTransdate(LocalDateTime transdate) {
+		this.transdate = transdate;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(Available, Description, ExpirationDate, Id, Item, LPN, Location, Lot, Lottable01,
 				Lottable02, Lottable03, Lottable06, Lottable07, Lottable08, Lottable09, Lottable10, Lottable11,
-				Lottable12, MESSAGE_ID, ManufacturingDate, OnHand, Owner, SERIALKEY, Status, WHSEID);
+				Lottable12, MESSAGE_ID, ManufacturingDate, OnHand, Owner, SERIALKEY, Status, WHSEID, transdate);
 	}
 
 	@Override
@@ -301,18 +315,19 @@ public class UCBInventoryEntity {
 				&& Objects.equals(MESSAGE_ID, other.MESSAGE_ID)
 				&& Objects.equals(ManufacturingDate, other.ManufacturingDate) && Objects.equals(OnHand, other.OnHand)
 				&& Objects.equals(Owner, other.Owner) && Objects.equals(SERIALKEY, other.SERIALKEY)
-				&& Objects.equals(Status, other.Status) && Objects.equals(WHSEID, other.WHSEID);
+				&& Objects.equals(Status, other.Status) && Objects.equals(WHSEID, other.WHSEID)
+				&& Objects.equals(transdate, other.transdate);
 	}
 
 	@Override
 	public String toString() {
-		return "InventoryEntity [Id=" + Id + ", MESSAGE_ID=" + MESSAGE_ID + ", WHSEID=" + WHSEID + ", Owner=" + Owner
+		return "UCBInventoryEntity [Id=" + Id + ", MESSAGE_ID=" + MESSAGE_ID + ", WHSEID=" + WHSEID + ", Owner=" + Owner
 				+ ", SERIALKEY=" + SERIALKEY + ", Item=" + Item + ", Description=" + Description + ", LPN=" + LPN
 				+ ", Lot=" + Lot + ", Location=" + Location + ", OnHand=" + OnHand + ", Available=" + Available
 				+ ", Status=" + Status + ", Lottable01=" + Lottable01 + ", Lottable02=" + Lottable02 + ", Lottable03="
 				+ Lottable03 + ", ManufacturingDate=" + ManufacturingDate + ", ExpirationDate=" + ExpirationDate
 				+ ", Lottable06=" + Lottable06 + ", Lottable07=" + Lottable07 + ", Lottable08=" + Lottable08
 				+ ", Lottable09=" + Lottable09 + ", Lottable10=" + Lottable10 + ", Lottable11=" + Lottable11
-				+ ", Lottable12=" + Lottable12 + "]";
+				+ ", Lottable12=" + Lottable12 + ", transdate=" + transdate + "]";
 	}
 }

@@ -19,7 +19,7 @@ logging:
 spring:
   profiles:
     active:
-    - "dev"
+    - "local"
   main:
     jvmArgs: -Xmx512m
     banner-mode: off

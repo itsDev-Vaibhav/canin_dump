@@ -1,10 +1,7 @@
 package com.trangile.prototype.excel;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,34 +28,34 @@ public class InventoryExcelExporter {
 	
 	private Workbook workbook;
 	private Sheet sheet;
-	private static final int BATCH_SIZE = 1000;
+	//private static final int BATCH_SIZE = 1000;
+	
+//	@Autowired
+//	private UCBInventoryRepo repo;
 
 	public InventoryExcelExporter() {
 		workbook = new SXSSFWorkbook();
 	}
 
-	public void exportInventory(HttpServletResponse response, List<UCBInventoryEntity> allRecords) throws IOException {
+	public void exportInventory(HttpServletResponse response, List<UCBInventoryEntity> allRecords, String dateTime) throws IOException {
 		logger.info("inside exportInventory with: " +allRecords.size());
 //		response.setContentType("application/octet-stream");
 		String[] classNames = allRecords.get(allRecords.size() - 1).getClass().getCanonicalName().split("\\.");
 		response.setContentType("text/csv");
 		String namePrefix = classNames[classNames.length - 1].replace("Entity", "");
-        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
-        String currentDateTime = dateFormatter.format(new Date());
+//        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+//        String currentDateTime = dateFormatter.format(new Date());
         String headerKey = "Content-Disposition";
 //        String headerValue = "attachment; filename=royal_canin_inventory_" + currentDateTime + ".xlsx";
-        String headerValue = "attachment; filename="+ namePrefix + "__"+currentDateTime + ".csv";
+        String headerValue = "attachment; filename="+ namePrefix + "__"+ dateTime + ".csv";
         response.setHeader(headerKey, headerValue);
         if (allRecords == null || allRecords.size() == 0) {
 			allRecords = new ArrayList<>();
 		}
         try(CSVWriter writer = new CSVWriter(response.getWriter())) {
-        	Date today = new Date();
-        	Date date = new Date(today.getTime() - MILLIS_IN_A_DAY);
-        	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         	StringBuilder dateString = new StringBuilder("As of ");
-        	dateString.append(dateFormat.format(date));
-        	writer.writeNext(dateString.toString().split(" ")); 
+        	dateString.append(dateTime);
+        	writer.writeNext(dateString.toString().split("\\s")); 
         	String[] header = {"Item", "Description", "LPN", "Lot", "Location", "On Hand", "Lottable06"};
         	 writer.writeNext(header);
         	 List<String[]> stringArrays = allRecords.stream()

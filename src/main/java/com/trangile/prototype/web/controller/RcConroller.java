@@ -1,6 +1,7 @@
 package com.trangile.prototype.web.controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,13 +73,15 @@ public class RcConroller {
 		InventoryExcelExporter excelInventoryExporter = new InventoryExcelExporter();
 		String formValue = form.getOwner();
 		List<UCBInventoryEntity> allRecords = null;
+		LocalDateTime max = LocalDateTime.now();
 		if (formValue.equalsIgnoreCase("UCB")) {
 			allRecords = inventoryRepo.getAllRecords();
+			max = inventoryRepo.max();
 		}
 		if (allRecords == null) {
 			allRecords = new ArrayList<>();
 		}
 		logger.info("Returning from RcController getSearchInventoryResult + " + form);
-		excelInventoryExporter.exportInventory(response, allRecords);
+		excelInventoryExporter.exportInventory(response, allRecords, max.toString());
 	}
 }
