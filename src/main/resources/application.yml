@@ -1,8 +1,8 @@
 server:
+  port: 9001
   servlet:
     session:
       timeout: 2m
-  port: 9001
   error:
     include-stacktrace: always
     include-exception: true
@@ -18,15 +18,16 @@ logging:
 spring:
   profiles:
     active:
-    - "dev"
+    - "local"
   main:
+    jvmArgs: -Xmx512m
     banner-mode: off
   thymeleaf:
     suffix: .html
     cache: false
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
     properties:
       dialect: org.hibernate.dialect.SQLServer2016Dialect
@@ -73,7 +74,7 @@ spring:
       on-profile: "dev"
 
 server:
-  address: 127.0.0.1
+  address: 10.72.3.2
 
 ########## DB DETAILS
 ########DB DETAILS
@@ -102,7 +103,22 @@ spring:
        
 ##### hosting server   
 server:
-  address: 192.168.50.176
-  servlet:
-    session:
-      timeout: 120s
+  address: 192.168.2.100
+########DB DETAILS
+
+security:
+  datasource:
+    username: fmluser
+    password: fml123
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://INP106A\\MSSQLSERVER2019:1443;databaseName=FMLPROD;encrypt=true;trustServerCertificate=true;
+
+      
+dbo:
+  datasource:
+    username: fmluser
+    password: fml123
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://INP106A\\MSSQLSERVER2019:1443;databaseName=FMLPROD;encrypt=true;trustServerCertificate=true;
+
+  

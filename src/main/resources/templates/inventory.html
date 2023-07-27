@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Search Dashboard</title>
+	<title>Search Inventory</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<style type="text/css">
@@ -35,7 +35,7 @@
 			margin: 10px;
 		}
 
-		#popupContainer {
+		#popupInventoryContainer {
 			display: none;
 			position: fixed;
 			top: 0;
@@ -45,7 +45,7 @@
 			background-color: rgba(0, 0, 0, 0.5);
 		}
 
-		#popupContent {
+		#popupInventoryContent {
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -56,7 +56,7 @@
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 		}
 
-		#closePopupButton {
+		#closeInventoryPopupButton {
 			margin-top: 10px;
 		}
 	</style>
@@ -72,29 +72,22 @@
 			<h2>Welcome <span sec:authentication="name"></span>!</h2>
 			<div align="center">
 				<div style="border-style:solid; width:500px">
-					<h4>Transactions</h4>
-					<form role="form" id="idForm" method="post" th:action="@{/rc/search}" th:object="${searchForm}">
-						<label>Item:</label>
-						<input id="idskuNo" type="text" th:field="*{sku}" />
-						<br />
-						<label>Batch No:</label>
-						<input id="idbatchNo" type="text" th:field="*{batchNo}" />
-						<br />
-						<label>SSCC NO:</label>
-						<input id="idsscNo" type="text" th:field="*{sscNo}" />
-						<br />
-						<!--
-						<button type="button" class="btn btn-primary" onclick="return validateForm()">Search</button>
-						-->
+					<h4>Inventory</h4>
+					<form role="form" id="idInventoryForm" method="post" th:action="@{/rc/searchInventory}"
+						th:object="${ownerSearch}">
+						<select id="owner" name="country" th:field="*{owner}">
+							<option value="UCB">UCB</option>
+						<!--	<option value="LEGRAND">LEGRAND</option> -->
+						</select>
 						<button type="submit" class="btn btn-primary">Search</button>
 						<br />
 					</form>
 				</div>
 				<!-- Create the pop-up container -->
-				<div id="popupContainer">
-					<div id="popupContent">
-						<p id="popupMessage"></p>
-						<button id="closePopupButton" class="btn btn-primary">Close</button>
+				<div id="popupInventoryContainer">
+					<div id="popupInventoryContent">
+						<p id="popupInventoryMessage"></p>
+						<button id="closeInventoryPopupButton" class="btn btn-primary">Close</button>
 					</div>
 				</div>
 			</div>
@@ -113,6 +106,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
 		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
 		crossorigin="anonymous"></script>
-	<script src="/js/main.js"></script>
+	<script src="/js/inventorymain.js"></script>
 </body>
+
 </html>
