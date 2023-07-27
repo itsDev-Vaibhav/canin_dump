@@ -1,5 +1,4 @@
 server:
-  address: 127.0.0.1
   port: 9001
   servlet:
     session:
@@ -75,7 +74,7 @@ spring:
       on-profile: "dev"
 
 server:
-  address: 127.0.0.1
+  address: 10.72.3.2
 
 ########## DB DETAILS
 ########DB DETAILS
@@ -104,7 +103,7 @@ spring:
        
 ##### hosting server   
 server:
-  address: 127.0.0.1
+  address: 192.168.2.100
 ########DB DETAILS
 
 security:

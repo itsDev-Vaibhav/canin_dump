@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -76,12 +77,24 @@ public class RcConroller {
 		LocalDateTime max = LocalDateTime.now();
 		if (formValue.equalsIgnoreCase("UCB")) {
 			allRecords = inventoryRepo.getAllRecords();
-			max = inventoryRepo.max();
+//			max = inventoryRepo.max();
+			max = getMaxDate(allRecords);
+			
 		}
 		if (allRecords == null) {
 			allRecords = new ArrayList<>();
 		}
 		logger.info("Returning from RcController getSearchInventoryResult + " + form);
 		excelInventoryExporter.exportInventory(response, allRecords, max.toString());
+	}
+
+
+
+	private LocalDateTime getMaxDate(List<UCBInventoryEntity> allRecords) {
+		Optional<LocalDateTime> localDateTime = Optional.of(allRecords.stream().map(UCBInventoryEntity :: getTransdate).max(LocalDateTime :: compareTo).get());
+		if(localDateTime.isPresent()) {
+			return localDateTime.get();
+		}
+		return LocalDateTime.now();
 	}
 }

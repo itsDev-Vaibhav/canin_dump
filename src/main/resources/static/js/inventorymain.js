@@ -12,11 +12,11 @@
 })();
 
 function compareUrl(url) {
-	if (url.toLowerCase() === "http://localhost:9001/welcome" || url.toLowerCase() === "http://localhost:9001/" ) {
+	if (url.toLowerCase() === "http://" + appAddress + ":" + appPort + "/welcome" || url.toLowerCase() === "http://" + appAddress + ":" + appPort + "/") {
 		return "idTransaction";
 	}
 	
-	if (url.toLowerCase() === "http://localhost:9001/inventory") {
+	if (url.toLowerCase() === "http://" + appAddress + ":" + appPort + "/inventory") {
 		return "idInventory";
 	}
 }

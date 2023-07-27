@@ -12,11 +12,11 @@
 })();
 
 function compareUrl(url) {
-	if (url.toLowerCase() === "http://localhost:9001/welcome" || url.toLowerCase() === "http://localhost:9001/" ) {
+	if (url.toLowerCase() === "http://" + appAddress + ":" + appPort + "/welcome" || url.toLowerCase() === "http://" + appAddress + ":" + appPort + "/") {
 		return "idTransaction";
 	}
 	
-	if (url.toLowerCase() === "http://localhost:9001/inventory") {
+	if (url.toLowerCase() === "http://" + appAddress + ":" + appPort + "/inventory") {
 		return "idInventory";
 	}
 }
@@ -224,11 +224,14 @@ async function fetchSSCCount(value) {
 	}
 }
 
+
+/*** 
+
 document.getElementById("idInventoryForm").addEventListener("submit", function(event) {
 	event.preventDefault(); // Prevent form submission
 	validateInventoryForm();
 });
-
+*/
 function validateInventoryForm(){
 	const owner = document.getElementById('owner').value;
 	if (isNullOrEmpty(owner)) {
@@ -249,12 +252,14 @@ function openInventoryPopup(message) {
 	popupContainer.style.display = 'block';
 }
 
+/** 
 document.getElementById('closeInventoryPopupButton').addEventListener('click', closeInventoryPopup);
 function closeInventoryPopup() {
 	const popupContainer = document.getElementById('popupInventoryContainer');
 	popupContainer.style.display = 'none';
 }
 
+*/
 
 
 async function fetchOwnerCount(value) {
