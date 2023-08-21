@@ -53,6 +53,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/js/**",
                 "/css/**",
                 "/img/**").permitAll()
+        	.antMatchers("/inventory/**").hasAnyRole("ROLE_ADMIN", "ROLE_UCB_USER")
+        	.antMatchers("/inventory/**").hasAnyRole("ROLE_ADMIN", "ROLE_UCB_USER")
             .anyRequest().authenticated()
             .and()
             .formLogin()
