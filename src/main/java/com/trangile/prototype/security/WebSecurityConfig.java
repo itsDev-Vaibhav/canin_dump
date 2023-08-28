@@ -17,7 +17,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     
 	
@@ -45,6 +45,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .permitAll();
 //    }
     
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests().antMatchers(
+//                "/registration**",
+//                "/internalCheck/**",
+//                "/js/**",
+//                "/css/**",
+//                "/img/**").permitAll()
+//        	.antMatchers("/inventory/**").hasAnyRole("ROLE_ADMIN", "ROLE_USER")
+////        	.antMatchers("/inventory/**").hasAnyRole("ROLE_ADMIN", "ROLE_UCB_USER")
+//            .anyRequest().authenticated()
+//            .and()
+//            .formLogin()
+//            .loginPage("/login")
+//            .permitAll()
+//            .and()
+//            .logout()
+//            .invalidateHttpSession(true)
+//            .clearAuthentication(true)
+//            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//            .logoutSuccessUrl("/login?logout")
+//            .permitAll();
+//    }
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers(
@@ -53,8 +77,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "/js/**",
                 "/css/**",
                 "/img/**").permitAll()
-        	.antMatchers("/inventory/**").hasAnyRole("ROLE_ADMIN", "ROLE_UCB_USER")
-        	.antMatchers("/inventory/**").hasAnyRole("ROLE_ADMIN", "ROLE_UCB_USER")
             .anyRequest().authenticated()
             .and()
             .formLogin()

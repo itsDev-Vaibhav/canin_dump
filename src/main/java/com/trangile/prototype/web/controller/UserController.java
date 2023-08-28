@@ -71,7 +71,7 @@ public class UserController {
     }
 	
 	
-	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_UCB_USER')")
+//	@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_UCB_USER')")
 	@GetMapping("/inventory")
 	public String inventory(Model model, String error, String logout) {
 		if (securityService.isAuthenticated()) {

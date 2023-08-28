@@ -58,10 +58,10 @@ security:
       
 dbo:
   datasource:
-    username: sa
-    password: Tspl@#2022
+    username: fmluser
+    password: fml123
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://localhost:1433;databaseName=FMLSTAGE;encrypt=true;trustServerCertificate=true;
+    url: jdbc:sqlserver://localhost:1433;databaseName=FMLPROD;encrypt=true;trustServerCertificate=true;
       
 server:
   address: 127.0.0.1  
