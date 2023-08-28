@@ -18,7 +18,7 @@ logging:
 spring:
   profiles:
     active:
-    - "local"
+    - "prod"
   main:
     jvmArgs: -Xmx512m
     banner-mode: off
@@ -58,10 +58,10 @@ security:
       
 dbo:
   datasource:
-    username: fmluser
-    password: fml123
+    username: sa
+    password: Tspl@#2022
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://localhost:1433;databaseName=FMLPROD;encrypt=true;trustServerCertificate=true;
+    url: jdbc:sqlserver://localhost:1433;databaseName=FMLSTAGE;encrypt=true;trustServerCertificate=true;
       
 server:
   address: 127.0.0.1  
