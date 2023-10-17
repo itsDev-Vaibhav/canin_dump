@@ -1,5 +1,4 @@
 server:
-  port: 9001
   servlet:
     session:
       timeout: 2m
@@ -64,18 +63,19 @@ dbo:
     url: jdbc:sqlserver://localhost:1433;databaseName=FMLSTAGE;encrypt=true;trustServerCertificate=true;
       
 server:
-  address: 127.0.0.1  
+  address: 127.0.0.1
+  port: 9001  
 ---
 
-###### development / uat server details
+###### development/uat server details
 spring:
   config:
     activate:
       on-profile: "dev"
 
 server:
-  address: 10.72.3.2
-
+  address: 10.72.251.74
+  port: 9001
 ########## DB DETAILS
 ########DB DETAILS
 security:
@@ -104,6 +104,8 @@ spring:
 ##### hosting server   
 server:
   address: 10.72.251.74
+  ##address: 127.0.0.1
+  port: 9002
 ########DB DETAILS
 
 security:

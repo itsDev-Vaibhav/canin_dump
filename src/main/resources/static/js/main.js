@@ -4,11 +4,13 @@
 	console.log("appPort: " + appPort);
 	var currentPageUrl = window.location.href;
 	console.log("currentPageUrl: " + currentPageUrl);
+	/*** 
 	const val = compareUrl(currentPageUrl);
 	var element = document.getElementById(val);
 	if (element) {
     	element.style.display = "none";
   	}
+  	*/
 })();
 
 function compareUrl(url) {

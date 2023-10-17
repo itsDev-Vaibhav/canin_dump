@@ -31,7 +31,7 @@ public class SCE_RC_SHIPMENT_TRF {
 	private String Distance;
 	private String VehicleType;
 	private String VehicleNo;
-	private Double Line_No;
+	private String Line_No;
 	private String ItemNo;
 	private String UnitofMeasureCode;
 	private Double QtytoShip;
@@ -58,11 +58,13 @@ public class SCE_RC_SHIPMENT_TRF {
 		
 	}
 
+	
+
 	public SCE_RC_SHIPMENT_TRF(Long id, String mESSAGE_ID, String wHSEID, String documentNo, String externalDocumentNo,
 			LocalDateTime shipmentDate, Double eDITransfer_fromCode, String transfer_fromCode,
 			Double eDITransfer_toCode, String transfer_toCode, String eDIMainCarrierNo, String mainCarrierNo,
 			String shippingAgentCode, String transportMethod, String distance, String vehicleType, String vehicleNo,
-			Double line_No, String itemNo, String unitofMeasureCode, Double qtytoShip, Double qtytoShipBase,
+			String line_No, String itemNo, String unitofMeasureCode, Double qtytoShip, Double qtytoShipBase,
 			String description, String reasonCode, Double eANCode, String vLCode, Double qtyperUnitofMeasure,
 			Double quantity, Double quantityBase, LocalDateTime expirationDate, String lotNo, String manufacturingLotNo,
 			String qualityStatus, String pHRStatus, String rDD, LocalDateTime manufacturingDate, String tNOPAL,
@@ -107,6 +109,8 @@ public class SCE_RC_SHIPMENT_TRF {
 		SourceSubType = sourceSubType;
 		SelltoCustomerName = selltoCustomerName;
 	}
+
+
 
 	public Long getId() {
 		return Id;
@@ -244,11 +248,11 @@ public class SCE_RC_SHIPMENT_TRF {
 		VehicleNo = vehicleNo;
 	}
 
-	public Double getLine_No() {
+	public String getLine_No() {
 		return Line_No;
 	}
 
-	public void setLine_No(Double line_No) {
+	public void setLine_No(String line_No) {
 		Line_No = line_No;
 	}
 

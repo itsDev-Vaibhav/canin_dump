@@ -22,7 +22,7 @@ public class SCE_RC_GRN {
 	private String BuyFromVendorNo;
 	private String LocationCode;
 	private LocalDateTime ReceiptDate;
-	private Double Line_No;
+	private String Line_No;
 	private String ItemNo;
 	private String UnitofMeasureCode;
 	private String Description;
@@ -46,10 +46,14 @@ public class SCE_RC_GRN {
 	public SCE_RC_GRN() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+
 
 
 	public SCE_RC_GRN(Long id, String mESSAGE_ID, String wHSEID, String documentNo, LocalDateTime orderDate,
-			String buyFromVendorNo, String locationCode, LocalDateTime receiptDate, Double line_No, String itemNo,
+			String buyFromVendorNo, String locationCode, LocalDateTime receiptDate, String line_No, String itemNo,
 			String unitofMeasureCode, String description, Double quantityTotal, String quantityBaseTotal,
 			String manufacturingLotNo, String eANCode, String qtyperUnitofMeasure, Double quantity, String quantityBase,
 			LocalDateTime expirationDate, String lotNo, String qualityStatus, String pHRStatus, LocalDateTime rDD,
@@ -164,12 +168,12 @@ public class SCE_RC_GRN {
 	}
 
 
-	public Double getLine_No() {
+	public String getLine_No() {
 		return Line_No;
 	}
 
 
-	public void setLine_No(Double line_No) {
+	public void setLine_No(String line_No) {
 		Line_No = line_No;
 	}
 

@@ -23,9 +23,13 @@ public class User {
     private String username;
 
     private String password;
+    
+    private String userFrom;
+
 
     @Transient
     private String passwordConfirm;
+    
 
     @ManyToMany
     @JoinTable(
@@ -33,44 +37,74 @@ public class User {
     		  joinColumns = @JoinColumn(name = "users_id"), 
     		  inverseJoinColumns = @JoinColumn(name = "roles_id"))
     private Set<Role> roles;
-    
-    public Long getUserId() {
+
+
+	public Long getUserId() {
 		return userId;
 	}
+
 
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
+
 	public String getUsername() {
-        return username;
-    }
+		return username;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
-    public String getPassword() {
-        return password;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
-    }
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
+
+	public String getUserFrom() {
+		return userFrom;
+	}
+
+
+	public void setUserFrom(String userFrom) {
+		this.userFrom = userFrom;
+	}
+
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+	
+	
+
+
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+
+
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}
+
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", userFrom=" + userFrom
+				+ ", roles=" + roles + "]";
+	}
+
 }

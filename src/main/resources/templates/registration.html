@@ -29,10 +29,23 @@
                             placeholder="Confirm your password">
                 <span class="has-error" th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"></span>
             </div>
+            <div class="form-group">
+                <input type="radio" id="option2" name="option2" value="RCI" th:field="*{userFrom}">
+                <label for="option2">RCI - User</label>
+              <!---              
+                <span class="has-error" th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"></span>
+                -->
+            </div>
+            <div class="form-group">
+                <input type="radio" id="option3" name="option3" value="UCB" th:field="*{userFrom}">
+                <label for="option3">UCB - User</label>
+              <!---              
+                <span class="has-error" th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"></span>
+                -->
+            </div>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
         </form>
-
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

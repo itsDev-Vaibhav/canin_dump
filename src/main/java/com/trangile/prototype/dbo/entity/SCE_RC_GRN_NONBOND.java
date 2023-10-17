@@ -22,7 +22,7 @@ public class SCE_RC_GRN_NONBOND {
 	private String TransferfromCode;
 	private String TransfertoCode;
 	private LocalDateTime ReceiptDate;
-	private Double Line_No;
+	private String Line_No;
 	private String ItemNo;
 	private String ManufacturingLotNo;
 	private String UnitofMeasureCode;
@@ -45,7 +45,7 @@ public class SCE_RC_GRN_NONBOND {
 	}
 
 	public SCE_RC_GRN_NONBOND(Long id, String mESSAGE_ID, String wHSEID, String documentNo, String description,
-			String transferfromCode, String transfertoCode, LocalDateTime receiptDate, Double line_No, String itemNo,
+			String transferfromCode, String transfertoCode, LocalDateTime receiptDate, String line_No, String itemNo,
 			String manufacturingLotNo, String unitofMeasureCode, String qtytoReceive, Double qtytoReceiveBase,
 			String eANCode, String qtyperUnitofMeasure, String quantity, Double quantityBase,
 			LocalDateTime expirationDate, String lotNo, LocalDateTime manufacturingDate, LocalDateTime rDD,
@@ -76,6 +76,10 @@ public class SCE_RC_GRN_NONBOND {
 		TNOPAL = tNOPAL;
 		SourceSubType = sourceSubType;
 	}
+
+
+
+
 
 	public Long getId() {
 		return Id;
@@ -141,11 +145,11 @@ public class SCE_RC_GRN_NONBOND {
 		ReceiptDate = receiptDate;
 	}
 
-	public Double getLine_No() {
+	public String getLine_No() {
 		return Line_No;
 	}
 
-	public void setLine_No(Double line_No) {
+	public void setLine_No(String line_No) {
 		Line_No = line_No;
 	}
 

@@ -63,7 +63,7 @@ public class ShipmentDataService {
 			dtoTRF.setCreationDate(shipment_TRF.getShipmentDate());
 			dtoTRF.setItemNo(shipment_TRF.getItemNo());
 			dtoTRF.setDescription(shipment_TRF.getDescription());
-			dtoTRF.setQtytoShipBase(shipment_TRF.getQtytoShipBase() * -1);
+			dtoTRF.setQtytoShipBase(shipment_TRF.getQuantityBase() * -1);
 			dtoTRF.setLotNo(shipment_TRF.getLotNo());
 			dtoTRF.setExpirationDate(shipment_TRF.getExpirationDate());
 			dtoTRF.setTNOPAL(shipment_TRF.getTNOPAL());
@@ -88,7 +88,7 @@ public class ShipmentDataService {
 			sdto.setCreationDate(shipment.getShipmentDate());
 			sdto.setItemNo(shipment.getItemNo());
 			sdto.setDescription(shipment.getDescription());
-			sdto.setQtytoShipBase(shipment.getQtytoShipBase() * -1);
+			sdto.setQtytoShipBase(shipment.getQuantityBase() * -1);
 			sdto.setLotNo(shipment.getLotNo());
 			sdto.setExpirationDate(shipment.getExpirationDate());
 			sdto.setTNOPAL(shipment.getTNOPAL());

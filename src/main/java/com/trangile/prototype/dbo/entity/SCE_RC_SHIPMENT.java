@@ -32,7 +32,7 @@ public class SCE_RC_SHIPMENT {
 	private String ManufacturingLotNo;
 	private String SelltoCustomerName;
 	private Double EDISelltoCustomerNo;
-	private Double Line_No;
+	private String Line_No;
 	private String ItemNo;
 	private String UnitofMeasureCode;
 	private Double EDILocationCode;
@@ -58,10 +58,12 @@ public class SCE_RC_SHIPMENT {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
 	public SCE_RC_SHIPMENT(Long id, String mESSAGE_ID, String wHSEID, String documentNo, String externalDocumentNo,
 			String description, Double packageTrackingNo, LocalDateTime shipmentDate, String selltoCustomerNo,
 			String shippingAgentCode, String transportMethod, String distance, String vehicleType, String vehicleNo,
-			String manufacturingLotNo, String selltoCustomerName, Double eDISelltoCustomerNo, Double line_No,
+			String manufacturingLotNo, String selltoCustomerName, Double eDISelltoCustomerNo, String line_No,
 			String itemNo, String unitofMeasureCode, Double eDILocationCode, String locationCode, Double qtytoShip,
 			Double qtytoShipBase, String reasonCode, Double eANCode, String vLCode, Double qtyperUnitofMeasure,
 			Double quantity, Double quantityBase, LocalDateTime expirationDate, String lotNo, String qualityStatus,
@@ -105,6 +107,8 @@ public class SCE_RC_SHIPMENT {
 		SourceSubType = sourceSubType;
 		TNOPAL = tNOPAL;
 	}
+
+
 
 	public Long getId() {
 		return Id;
@@ -242,11 +246,11 @@ public class SCE_RC_SHIPMENT {
 		EDISelltoCustomerNo = eDISelltoCustomerNo;
 	}
 
-	public Double getLine_No() {
+	public String getLine_No() {
 		return Line_No;
 	}
 
-	public void setLine_No(Double line_No) {
+	public void setLine_No(String line_No) {
 		Line_No = line_No;
 	}
 

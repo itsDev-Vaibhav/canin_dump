@@ -51,7 +51,7 @@ public class SalesExcelWriter {
     }
 	
 	private void createCell(Row row, int columnCount, Object value, CellStyle style) {
-        sheet.autoSizeColumn(columnCount);
+//        sheet.autoSizeColumn(columnCount);
         Cell cell = row.createCell(columnCount);
         if (value instanceof Number) {
         	if(value instanceof Integer) {

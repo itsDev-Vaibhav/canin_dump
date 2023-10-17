@@ -1,9 +1,8 @@
 package com.trangile.prototype.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.Model;	
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +13,7 @@ import com.trangile.prototype.dto.SearchForm;
 import com.trangile.prototype.dto.SearchInventoryDto;
 import com.trangile.prototype.security.entity.User;
 import com.trangile.prototype.security.service.SecurityService;
+import com.trangile.prototype.security.service.UserSecurityService;
 import com.trangile.prototype.service.UserService;
 
 @CrossOrigin("*")
@@ -25,16 +25,33 @@ public class UserController {
 
 	    @Autowired
 	    private SecurityService securityService;
+	    
+	    @Autowired
+	    private UserSecurityService userSecurityService;
 
 	    @Autowired
 	    private UserValidator userValidator;
 
-	@GetMapping({ "/", "/welcome" })
+	@GetMapping("/")
 	public String getwelcome(Model model) {
-		model.addAttribute("searchForm", new SearchForm());
-		Object attribute = model.getAttribute("message");
-		model.addAttribute("message", "");
-		return "welcome";
+		String indexPage = "";
+		if (securityService.isAuthenticated()) {
+			indexPage = userSecurityService.getViewByUser();
+		}
+		String redirect = "redirect:/" + indexPage;
+		return redirect;
+	}
+	
+	
+	@GetMapping("/welcome")
+	public String getwelcomePage(Model model) {
+		if (securityService.isAuthenticated()) {
+			model.addAttribute("searchForm", new SearchForm());
+			Object attribute = model.getAttribute("message");
+			model.addAttribute("message", "");
+			return "welcome";
+		}
+		return "/";
 	}
 
 	@GetMapping("/login")
@@ -58,7 +75,7 @@ public class UserController {
 		}
 		userService.save(userForm);
 		securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
-		return "redirect:/welcome";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/registration")

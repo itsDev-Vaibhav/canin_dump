@@ -52,11 +52,12 @@ public class InventoryExcelExporter {
         	StringBuilder dateString = new StringBuilder("As of ");
         	dateString.append(dateTime);
         	writer.writeNext(dateString.toString().split("\\s")); 
-        	String[] header = {"Item", "Description", "LPN", "Lot", "Location", "On Hand", "Lottable06"};
+        	String[] header = {"Item", "Description", "LPN", "Lot", "Location", "On Hand", "Allocated",  "Available", "Lottable06"};
         	 writer.writeNext(header);
         	 List<String[]> stringArrays = allRecords.stream()
-        	            .map(obj -> new String[] {nullString(obj.getItem()), nullString(obj.getDescription()), nullString(obj.getLPN()), nullString(obj.getLot()), nullString(obj.getLocation()), obj.getOnHand().toString(), obj.getLottable06().toString()})
+        	            .map(obj -> new String[] {nullString(obj.getItem()), nullString(obj.getDescription()), nullString(obj.getLPN()), nullString(obj.getLot()), nullString(obj.getLocation()), checkNumericString(obj.getOnHand()), checkNumericString(obj.getAllocated()), checkNumericString(obj.getAvailable()),nullString(obj.getLottable06().toString())})
         	            .collect(Collectors.toList());
+//        	 System.out.println(stringArrays);
         	 writer.writeAll(stringArrays);
         }
 	}
@@ -92,6 +93,11 @@ public class InventoryExcelExporter {
 //        logger.info("returning from writeDataLines");
 //	}
 	
+	private String checkNumericString(Double val) {
+//		System.out.println("checkNumericString :: " + val);
+		return val == null ? "0.0" : val.toString();
+	}
+
 	private String nullString(String t) {
 		return t == null ? "": t;
 	}

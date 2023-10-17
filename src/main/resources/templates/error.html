@@ -1,15 +1,35 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
   <title th:text="${message}"></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<style type="text/css"> 
+				table, th, td {
+		  border: 1px solid black;
+		  border-collapse: collapse;
+		}
+		th, td {
+		  background-color: #96D4D4;
+		}
+	</style>
 </head>
 <body>
-<table border="1">
-  <tr><td>Error Message</td><td th:text="${message}"></td></tr>
-  <tr><td>Status Code</td><td th:text="${status}"></td></tr>
-  <tr><td>Exception</td><td th:text="${exception}"></td></tr>
-  <tr><td>Stacktrace</td><td><pre th:text="${trace}"></pre></td></tr>
-  <tr><td>Binding Errors</td><td th:text="${errors}"></td></tr>
-</table>
+	<div th:replace="fragments/header::header"></div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="container" align = "center">
+		<table border="1" >
+		  <tr><td>Error Message</td><td th:text="${message}"></td></tr>
+		  <tr><td>Status Code</td><td th:text="${status}"></td></tr>
+		  <tr><td>Exception</td><td th:text="${exception}"></td></tr>
+		  <tr><td>Stacktrace</td><td><pre th:text="${trace}"></pre></td></tr>
+		  <tr><td>Binding Errors</td><td th:text="${errors}"></td></tr>
+		</table>
+	</div>	
 </body>
 </html>
